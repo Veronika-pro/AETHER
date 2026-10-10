@@ -929,6 +929,18 @@
     width:100%; padding:12px 14px; background:rgba(255,255,255,0.05); border:1px solid var(--line);
     border-radius:var(--r-sm); color:var(--ink); font-size:16px; margin:18px 0 12px; /* 16px: iOS Safari zooms into smaller inputs */
   }
+  /* Reserve: price is the decision, so it leads; the button names the result */
+  #reserveModal{ --rsv-light:var(--focus); }
+  #reserveModal[data-mode="flow"]{ --rsv-light:var(--flow); }
+  #reserveModal[data-mode="motion"]{ --rsv-light:#ECEAE4; }
+  .rsv-head{ display:flex; align-items:center; gap:18px; padding-right:48px; }
+  .rsv-thumb{ width:76px; height:76px; flex:none; object-fit:contain; border-radius:var(--r-sm); background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.08), rgba(255,255,255,.02)); padding:6px; }
+  .info-modal-card .rsv-head h3{ margin-top:0; font-size:20px; font-weight:500; color:var(--ink-soft); }
+  .rsv-price{ font-size:36px; font-weight:600; letter-spacing:-0.035em; line-height:1.05; margin-top:2px; }
+  .info-modal-card .rsv-perks{ margin-top:20px; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); }
+  .rsv-done{ text-align:left; }
+  .rsv-mark{ width:44px; height:44px; color:var(--rsv-light); }
+  .info-modal-card .rsv-done h3{ margin-top:20px; font-size:28px; font-weight:600; letter-spacing:-0.03em; }
   @media (max-width:480px){
     .info-modal-card{ padding:28px 24px; }
     .info-modal-close{ width:44px; height:44px; top:14px; right:14px; }
@@ -1691,6 +1703,36 @@
   .hx-buy .btn:hover, .fc-actions .btn:hover, .info-modal-card .btn:hover{background:#FFFFFF; color:var(--on-btn);}
   .sheet-actions .btn:hover{background:#000000; color:#FFFFFF;}
   header.nav .nav-right > .btn:hover{background:rgba(255,255,255,0.06); color:var(--ink);}
+
+  /* ===== MODAL SYSTEM (2026-10-10) =====
+     8pt grid. One outer radius (card 24); everything inside is square like every button on the site
+     (concentric rule: padding >= radius, so inner radius = 0). The close control is a bare icon with a 44px hit area,
+     placed so the icon's top and right edges sit exactly on the content padding: top/right = pad - 14. */
+  .info-modal-card{ --pad:32px; padding:var(--pad); border-radius:24px; max-width:432px; }
+  .info-modal-close, .mm-close{ width:44px; height:44px; border:0; border-radius:0; background:transparent; color:var(--ink-soft); }
+  .info-modal-close{ top:calc(var(--pad) - 14px); right:calc(var(--pad) - 14px); }
+  .mm-close{ margin-right:-13px; } /* 18px icon in a 44px box: icon edge lands on --edge, like the burger */
+  .info-modal-close:hover, .mm-close:hover{ color:var(--ink); }
+  .info-modal-close:focus-visible, .mm-close:focus-visible, .info-modal-card .btn:focus-visible{ outline:1px solid var(--ink-soft); outline-offset:3px; }
+  .info-modal-card .btn:focus:not(:focus-visible){ outline:none; }
+  .info-modal-card .eyebrow{ margin:0; line-height:16px; padding-right:48px; }
+  .info-modal-card h3{ margin-top:8px; font-size:28px; font-weight:600; letter-spacing:-0.03em; line-height:1.15; }
+  .info-modal-card p{ margin-top:16px; font-size:15px; line-height:24px; }
+  .info-modal-card .btn{ margin-top:32px; border-radius:0; min-height:48px; }
+  .modal-input{ border-radius:0; height:48px; padding:0 16px; margin:24px 0 8px; }
+  .info-modal-card .footer-tag{ max-width:none; margin-top:16px !important; font-size:13px; line-height:20px; }
+  /* reserve */
+  .rsv-head{ gap:16px; padding-right:48px; }
+  .rsv-thumb{ width:72px; height:72px; border-radius:0; padding:8px; }
+  .info-modal-card .rsv-head h3{ margin-top:0; font-size:15px; line-height:24px; letter-spacing:0; }
+  .rsv-price{ font-size:40px; line-height:44px; margin-top:0; }
+  .info-modal-card .rsv-perks{ margin-top:24px; line-height:16px; }
+  .rsv-step .btn{ margin-top:0; }
+  .rsv-mark{ width:40px; height:40px; display:block; }
+  .info-modal-card .rsv-done h3{ margin-top:24px; font-size:28px; }
+  @media (max-width:480px){
+    .info-modal-card{ --pad:24px; padding:var(--pad); }
+  }
 </style>
 </head>
 <body>
@@ -2149,15 +2191,29 @@
     <button class="info-modal-close" id="reserveModalClose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
-    <div class="eyebrow">Reserve</div>
-    <h3 id="reserveModalProduct">Aether One</h3>
-    <p id="reserveModalPrice">€449 · Two-year warranty · 14-day home trial</p>
-    <!-- No action/backend: this is a static concept demo. JS below shows an inline confirmation instead of submitting anywhere. Wire up a real endpoint before production use. -->
-    <form id="reserveForm">
-      <input type="email" id="reserveEmail" class="modal-input" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
-      <button type="submit" class="btn" style="width:100%; justify-content:center;">Reserve</button>
-    </form>
-    <p class="footer-tag" id="reserveNote" style="margin-top:14px;">No payment now — we'll email you when it ships. (Concept project: nothing is actually sent.)</p>
+    <div class="rsv-step" id="rsvStep">
+      <div class="rsv-head">
+        <img class="rsv-thumb" id="reserveThumb" src="images/prod-one-1600.webp" alt="" width="76" height="76">
+        <div>
+          <h3 id="reserveModalProduct">Aether One</h3>
+          <div class="rsv-price" id="reserveModalPrice">€449</div>
+        </div>
+      </div>
+      <p class="rsv-perks">Two-year warranty &middot; 14-day home trial</p>
+      <!-- No action/backend: this is a static concept demo. JS below shows an inline confirmation instead of submitting anywhere. Wire up a real endpoint before production use. -->
+      <form id="reserveForm">
+        <input type="email" id="reserveEmail" class="modal-input" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+        <button type="submit" class="btn" id="reserveSubmit" style="width:100%; justify-content:center;">Reserve Aether One</button>
+      </form>
+      <p class="footer-tag" id="reserveNote" style="margin-top:14px;">No payment now. We'll email you when it ships. (Concept project: nothing is actually sent.)</p>
+    </div>
+    <div class="rsv-done" id="rsvDone" hidden>
+      <svg class="rsv-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10.73 8.47 L17.03 11.02"/><path d="M8.85 10.73 L15.15 13.28"/><path d="M6.97 12.98 L13.27 15.54"/></g></svg>
+      <h3>You're on the list.</h3>
+      <p id="rsvDoneMsg">We'll email you the day Aether One ships.</p>
+      <p class="footer-tag" id="rsvDoneNote">Concept project: no order is actually placed.</p>
+      <button type="button" class="btn" id="rsvDoneBtn">Done</button>
+    </div>
   </div>
 </div>
 
@@ -2916,16 +2972,23 @@
     if(!modal) return;
 
     var PRICE_MAP = { 'Aether One':'€449', 'Aether Flow':'€249', 'Aether Move':'€179' };
-    var DEFAULT_NOTE = "No payment now — we'll email you when it ships. (Concept project: nothing is actually sent.)";
+    var MODE_MAP  = { 'Aether One':['focus','one'], 'Aether Flow':['flow','flow'], 'Aether Move':['motion','move'] };
+    var DEFAULT_NOTE = "No payment now. We'll email you when it ships. (Concept project: nothing is actually sent.)";
+    var step = document.getElementById('rsvStep'), done = document.getElementById('rsvDone');
+    var doneMsg = document.getElementById('rsvDoneMsg'), doneBtn = document.getElementById('rsvDoneBtn');
+    var thumb = document.getElementById('reserveThumb'), submitBtn = document.getElementById('reserveSubmit');
 
     var lastFocus = null;
     function openReserve(product){
       lastFocus = document.activeElement;
+      var m = MODE_MAP[product] || MODE_MAP['Aether One'];
+      modal.dataset.mode = m[0];
+      thumb.src = 'images/prod-' + m[1] + '-1600.webp';
       productEl.textContent = product;
-      priceEl.style.display = '';
-      priceEl.textContent = (PRICE_MAP[product] || '') + ' · Two-year warranty · 14-day home trial';
+      priceEl.textContent = PRICE_MAP[product] || '';
+      submitBtn.textContent = 'Reserve ' + product;
       form.reset();
-      form.style.display = '';
+      step.hidden = false; done.hidden = true;
       note.textContent = DEFAULT_NOTE;
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -2948,10 +3011,11 @@
       e.preventDefault();
       var email = document.getElementById('reserveEmail');
       if(!email.checkValidity()){ email.reportValidity(); return; }
-      form.style.display = 'none';
-      priceEl.style.display = 'none';
-      note.textContent = "Thanks — you're on the reserve list for " + productEl.textContent + ". (This is a concept project, so no order is actually placed.)";
+      doneMsg.textContent = "We'll email you the day " + productEl.textContent + " ships.";
+      step.hidden = true; done.hidden = false;
+      doneBtn.focus();
     });
+    doneBtn.addEventListener('click', closeReserve);
   })();
 
 
