@@ -1,0 +1,3273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AETHER — Premium Audio System | Tuned to Your State of Mind</title>
+<meta name="description" content="AETHER is a premium audio system with three modes — Focus, Flow, and Motion — built for how your day actually moves. Find your mode, compare models, and reserve yours.">
+
+<!-- Favicon: brand mark = the earcup face with its engraving (circle + three cuts at 22deg), 2026-10-03 -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Open Graph / Facebook, Telegram, etc. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AETHER — Premium Audio System | Tuned to Your State of Mind">
+<meta property="og:description" content="Three modes of sound — Focus, Flow, and Motion — engineered for the way your day actually moves. Find your mode, compare models, and reserve yours.">
+<!-- og-image.png is 1200x630 (hero, final state). Domain set 2026-10-03 -->
+<meta property="og:image" content="https://aether-sound-omega.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AETHER — three headphones: Flow, One and Move under the line One quiet">
+<meta property="og:url" content="https://aether-sound-omega.vercel.app/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AETHER — Premium Audio System | Tuned to Your State of Mind">
+<meta name="twitter:description" content="Three modes of sound — Focus, Flow, and Motion — engineered for the way your day actually moves.">
+<meta name="twitter:image" content="https://aether-sound-omega.vercel.app/og-image.png">
+
+<!-- GA4: вставити тег тут -->
+<!-- Meta Pixel: вставити тут -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* "Three atmospheres": Focus = still cold air, Flow = warm dusk, Motion = daylight */
+    --bg:#0A0B0D;
+    --bg-alt:#111316;
+    --surface:#16181C;
+    --line:rgba(221,227,234,0.12);
+    --line-soft:rgba(221,227,234,0.07);
+    --ink:#F2F3F4;
+    --ink-soft:rgba(242,243,244,0.72);
+    --ink-faint:rgba(242,243,244,0.50);
+    --white:#FFFFFF;
+    --focus:#DDE3EA;   /* cold light */
+    --flow:#CDBBA0;    /* champagne dusk: warm, never orange */
+    --motion:#6B665E;  /* warm graphite on bone */
+    --bone:#ECEAE4;
+    --btn:#ECEAE4; --on-btn:#0E0F11;   /* every button in the dark world: bone on graphite */
+    --accent-1:var(--focus);
+    --accent-2:var(--focus);
+    --accent:var(--focus);        /* solid: no gradients anywhere */
+    --accent-solid:var(--focus);
+    --on-accent:#0A0B0D;
+    --font-display:'Geist',system-ui,-apple-system,sans-serif;
+    --font-mono:'Geist Mono',ui-monospace,monospace;
+    --maxw:1280px;
+    --t-num-m:clamp(56px,min(7.2vw,13vh),112px);   /* display numbers, second tier: Situation time, footer promise */
+    --edge:clamp(20px,5vw,64px);
+    --r-lg:28px;
+    --r-md:20px;
+    --r-sm:14px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-display);
+    font-optical-sizing:none;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--edge);padding-right:var(--edge);}
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:800;
+    margin:0;
+    letter-spacing:-0.01em;
+    line-height:1.02;
+  }
+
+  /* one consistent size/spacing pattern for every section headline */
+  .section-title{
+    font-size:clamp(32px,4.5vw,58px);
+    text-transform:uppercase;
+    margin-top:20px;
+    max-width:720px;
+  }
+  @media (max-width:480px){
+    .section-title{ font-size:clamp(24px,6.8vw,32px); }
+  }
+
+  .eyebrow{
+    font-weight:600;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  /* chapter marker = the brand mark: three lines. The line of the section's mode runs long. */
+  .eyebrow::before{
+    content:"";
+    --mark:var(--accent);
+    width:16px; height:9px; flex-shrink:0;
+    background:
+      linear-gradient(var(--mark),var(--mark)) 0 0   / var(--w1,100%) 1px no-repeat,
+      linear-gradient(var(--mark),var(--mark)) 0 4px / var(--w2,100%) 1px no-repeat,
+      linear-gradient(var(--mark),var(--mark)) 0 8px / var(--w3,100%) 1px no-repeat;
+    transition:background-size .7s cubic-bezier(.2,.7,.2,1);
+  }
+  [data-atmo="focus"] .eyebrow::before, [data-mode="focus"] .eyebrow::before{--w1:100%; --w2:44%; --w3:44%;}
+  [data-atmo="flow"] .eyebrow::before, [data-mode="flow"] .eyebrow::before{--w1:44%; --w2:100%; --w3:44%;}
+  [data-atmo="motion"] .eyebrow::before, [data-mode="motion"] .eyebrow::before{--w1:44%; --w2:44%; --w3:100%;}
+
+  .grad-text{
+    background:var(--accent);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.01em;
+    border-radius:999px;
+    border:1px solid transparent;
+    background:var(--accent);
+    color:var(--on-accent);
+    transition:all .25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{ filter:brightness(1.08); transform:translateY(-1px); }
+  .btn.btn-outline{
+    background:transparent; color:var(--ink); border:1px solid var(--line);
+  }
+  .btn.btn-outline:hover{ background:rgba(255,255,255,0.06); border-color:var(--ink-soft); transform:translateY(-1px); }
+  .btn.btn-on-accent{ background:var(--bg); color:var(--ink); }
+  .btn.btn-on-accent:hover{ background:#000; }
+  .btn svg{width:14px;height:14px;flex-shrink:0;}
+
+  section{position:relative;}
+  .section-pad{padding:120px 0;}
+  @media (max-width:820px){ .section-pad{padding:72px 0;} }
+
+  .divider{border:none;border-top:1px solid var(--line);margin:0;}
+
+  /* ================= NAV ================= */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px var(--edge);
+    display:flex; align-items:center; justify-content:space-between;
+    transition:background .35s ease, padding .35s ease, border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(10,10,12,0.82);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    padding:14px var(--edge);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-display); font-weight:800; font-size:20px; letter-spacing:0.02em;
+    color:var(--ink);
+  }
+  .logo svg{width:24px;height:24px;}
+  .nav-modes{
+    display:flex; gap:6px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:4px; border-radius:999px;
+  }
+  .nav-modes button{
+    border:none; background:transparent;
+    font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    padding:9px 16px; border-radius:999px; color:var(--ink-soft);
+    transition:all .25s ease;
+  }
+  .nav-modes button.active{ background:var(--accent); color:var(--on-accent); }
+  .nav-right{display:flex; align-items:center; gap:14px;}
+  .nav-links{display:flex; gap:26px; font-size:13px; font-weight:500; color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--ink);}
+  .burger{display:none; flex-direction:column; gap:4px; background:none; border:none; padding:6px;}
+  .burger span{width:20px;height:2px;background:var(--ink);}
+
+  @media (max-width:1024px){
+    .nav-links{display:none;}
+  }
+  @media (max-width:860px){
+    .nav-modes{display:none;}
+    .nav-right .btn{display:none;}
+    .burger{display:flex;}
+  }
+
+  .mobile-menu{
+    position:fixed; inset:0; z-index:200;
+    background:var(--bg);
+    transform:translateX(100%);
+    transition:transform .35s ease;
+    overflow-y:auto;
+  }
+  .mobile-menu.open{transform:translateX(0);}
+  .mobile-menu-inner{padding:22px var(--edge) 40px; display:flex; flex-direction:column; min-height:100%;}
+  .mobile-menu-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:44px;}
+  .mm-close{background:var(--surface); border:1px solid var(--line); width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink);}
+  .mm-close svg{width:18px;height:18px;}
+  .mm-modes{display:flex; gap:8px; margin-bottom:36px;}
+  .mm-modes button{
+    flex:1; border:1px solid var(--line); background:var(--surface); padding:14px 10px; border-radius:var(--r-sm);
+    font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft);
+  }
+  .mm-modes button.active{background:var(--accent); color:var(--on-accent); border-color:transparent;}
+  .mm-links{display:flex; flex-direction:column; gap:4px; margin-bottom:auto;}
+  .mm-links a{
+    font-family:var(--font-display); font-weight:800; font-size:26px; text-transform:uppercase;
+    padding:16px 0; border-bottom:1px solid var(--line); color:var(--ink);
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:flex-end;
+    padding:140px var(--edge) 0;
+    overflow:hidden;
+  }
+  .hero-media{
+    position:absolute; inset:0;
+    z-index:0;
+  }
+  .hero-media img, .hero-media video{
+    width:100%; height:100%; object-fit:cover;
+    filter:grayscale(25%);
+  }
+  .hero-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(6,6,7,0.25) 0%, rgba(6,6,7,0.10) 40%, rgba(6,6,7,0.82) 100%);
+  }
+  .hero-media::before{
+    content:"";
+    position:absolute; inset:0;
+    background:var(--accent);
+    mix-blend-mode:overlay;
+    opacity:0.24;
+    z-index:1;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:var(--maxw); margin:0 auto; width:100%;
+    padding-bottom:64px;
+    color:var(--white);
+  }
+  .hero-eyebrow{
+    font-size:12px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase;
+    color:rgba(255,255,255,0.75); margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(46px,8vw,108px);
+    color:var(--white);
+    text-transform:uppercase;
+    max-width:15ch;
+  }
+  .hero-sub{
+    margin-top:26px;
+    font-size:clamp(16px,1.6vw,20px);
+    line-height:1.5;
+    max-width:46ch;
+    min-height:4.5em;
+    color:rgba(255,255,255,0.82);
+    font-weight:400;
+  }
+  .hero-cta-row{
+    margin-top:40px;
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  .hero-cta-row .btn.btn-outline{border-color:rgba(255,255,255,0.4); color:var(--white);}
+  .hero-cta-row .btn.btn-outline:hover{background:var(--white); color:var(--on-accent); border-color:var(--white);}
+
+  .hero-states{
+    margin-top:64px;
+    display:flex; gap:0;
+    border-top:1px solid rgba(255,255,255,0.2);
+  }
+  .hero-state-tab{
+    flex:1; text-align:left;
+    background:none; border:none; color:rgba(255,255,255,0.55);
+    padding:20px 20px 0; position:relative;
+    font-family:var(--font-display);
+  }
+  .hero-state-tab::before{
+    content:""; position:absolute; top:-1px; left:0; height:2px; width:0%;
+    background:var(--accent); transition:width .3s ease;
+  }
+  .hero-state-tab.active{color:var(--white);}
+  .hero-state-tab.active::before{width:100%;}
+  .hero-state-tab .num{font-size:11px; letter-spacing:0.1em; opacity:0.6; display:block; margin-bottom:6px;}
+  .hero-state-tab .label{font-family:var(--font-display); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:0.02em;}
+  @media (max-width:700px){
+    .hero{padding-top:120px;}
+    .hero-states{
+      overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    .hero-states::-webkit-scrollbar{display:none;}
+    .hero-state-tab{flex:0 0 auto; min-width:150px; padding:16px 16px 0;}
+  }
+  @media (max-width:480px){
+    .hero-cta-row .btn{flex:1; justify-content:center;}
+  }
+
+  /* ================= FACTS (static spec line under Hero) ================= */
+  .facts{
+    background:var(--bg);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .facts-grid{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    margin:0 auto;
+  }
+  .fact{
+    display:flex; flex-direction:column-reverse; justify-content:flex-end; gap:14px;
+    padding:clamp(28px,4vw,48px) clamp(16px,2vw,28px);
+    border-left:1px solid var(--line-soft);
+    opacity:0; transform:translateY(24px);
+    transition:opacity .9s ease-out, transform 1.2s cubic-bezier(.19,1,.22,1);
+    transition-delay:calc(var(--i,0) * 120ms);
+  }
+  .fact:first-child{border-left:0; padding-left:0;}
+  .fact:nth-child(2){--i:1;} .fact:nth-child(3){--i:2;} .fact:nth-child(4){--i:3;}
+  .facts.in .fact{opacity:1; transform:none;}
+  .fact-num{
+    margin:0;
+    font-family:var(--font-display); font-weight:300;
+    font-size:clamp(40px,5.2vw,76px); line-height:0.95; letter-spacing:-0.04em;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .fact-num .count{font-weight:inherit; display:inline-block; text-align:left;}
+  .fact-num span{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em;
+    color:var(--ink-faint);
+    margin-left:8px; vertical-align:0.9em;
+  }
+  .fact-label{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  @media (max-width:760px){
+    .facts-grid{grid-template-columns:repeat(2,1fr);}
+    .fact{padding:28px 0 28px 16px;}
+    .fact:nth-child(odd){border-left:0; padding-left:0;}
+    .fact:nth-child(n+3){border-top:1px solid var(--line-soft);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .fact{opacity:1; filter:none; transition:none;}
+  }
+
+  /* ================= PROBLEM ================= */
+  .problem-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+    max-width:none; margin-bottom:56px;
+  }
+  .problem-head-text{max-width:760px;}
+  .head-actions{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .icon-circle{
+    width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+    background:var(--surface); color:var(--ink); display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; transition:all .25s ease;
+  }
+  .icon-circle svg{width:16px;height:16px;}
+  .icon-circle:hover{background:var(--accent); color:var(--on-accent); border-color:transparent;}
+  /* ================= SITUATION: one day, three airs (full-screen, 2026-10-03) =================
+     A full-bleed chapter, so it sits on the hero grid (var(--edge)), not on the 1280 wrap.
+     Each scene is a photograph filling the pinned screen; the text lives in the empty part of
+     the frame (fog, sky, haze). Graphite ink, the colour of the air only in the time and the dot.
+     Scenes swap through a white haze while the new frame settles from 1.06 to 1. */
+  .day{position:relative; height:380vh; background:#F3F3F1; color:var(--ink);
+    --ink:#1D1D1F; --ink-soft:rgba(29,29,31,.72); --ink-faint:rgba(29,29,31,.52); --line:rgba(29,29,31,.22);
+    --lc:128,108,80;}
+  .day[data-atmo="focus"]{--lc:70,88,108;}
+  .day[data-atmo="motion"]{--lc:92,102,80;}
+  .day ::selection{background:#1D1D1F; color:#fff;}
+  .day-pin{position:sticky; top:0; height:100vh; height:100svh; overflow:hidden;}
+
+  /* the photographs */
+  .day-shots{position:absolute; inset:0;}
+  .day-shot{position:absolute; inset:0; margin:0; opacity:0; transform:scale(1.06);
+    transition:opacity 1.2s ease, transform 7s cubic-bezier(.2,.7,.2,1);}
+  .day-shot.is-on{opacity:1; transform:scale(1);}
+  .day-shot img{width:100%; height:100%; max-width:none; object-fit:cover; object-position:var(--fp,50% 50%); display:block;}
+  /* soft paper light behind the type (top-left) and under the day line (bottom) */
+  .day-veil{position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 62% 70% at 0% 0%, rgba(243,243,241,.62), rgba(243,243,241,0) 70%),
+      linear-gradient(to top, rgba(243,243,241,.72), rgba(243,243,241,0) 26%);}
+  /* the office frame has window mullions behind the type: a little more paper there */
+  .day-veil::before{content:""; position:absolute; inset:0; opacity:0; transition:opacity 1.2s ease;
+    background:radial-gradient(ellipse 48% 72% at 0% 24%, rgba(243,243,241,.72), rgba(243,243,241,0) 74%);}
+  .day[data-atmo="focus"] .day-veil::before{opacity:1;}
+  .day-haze{position:absolute; inset:0; background:#F6F6F4; opacity:0; pointer-events:none;}
+  .day-haze.is-on{animation:dayHaze 1.3s ease;}
+  @keyframes dayHaze{0%{opacity:0;} 35%{opacity:.62;} 100%{opacity:0;}}
+
+  /* the type layer */
+  .day-ui{position:absolute; inset:0; padding:clamp(96px,13vh,136px) var(--edge) clamp(24px,4vh,40px);
+    display:flex; flex-direction:column;}
+  .day-top{display:flex; justify-content:space-between; align-items:baseline;}
+  .day .eyebrow{color:var(--ink-soft);}
+  .day-idx, .day-dot i, .day-ticks, .day-meta{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);}
+  .day-idx{font-variant-numeric:tabular-nums;}
+
+  .day-stage{position:relative; flex:1; margin-top:var(--sp-label);}
+  .day-intro, .day-scene{position:absolute; left:0; top:0; max-width:min(52%,720px);
+    opacity:0; filter:blur(10px); transform:translateY(14px); pointer-events:none;
+    transition:opacity .8s ease, filter .8s ease, transform 1s cubic-bezier(.19,1,.22,1);}
+  .day-intro.is-on, .day-scene.is-on{opacity:1; filter:none; transform:none;}
+  .day .section-title{font-size:clamp(40px,min(5.4vw,9vh),96px); max-width:none; line-height:1; letter-spacing:-0.04em; color:var(--ink);}
+  .day-lead{margin:var(--sp-text) 0 0; font-size:clamp(17px,1.4vw,20px); font-weight:400; color:var(--ink-soft);}
+
+  /* the time: the hero's number voice (600, tight), one step down the scale — the giant size
+     belongs to the hero alone. Type scale: hero line > hero stats > this (= footer promise numbers) > h2 */
+  .day-time{font-size:var(--t-num-m); font-weight:600; letter-spacing:-0.05em; line-height:.86;
+    color:rgb(var(--lc)); transition:color .8s ease; white-space:nowrap;}
+  .day-title{margin:var(--s-6) 0 0; font-size:clamp(24px,2.2vw,34px); font-weight:500; letter-spacing:-0.025em; line-height:1.1; color:var(--ink);}
+  .day-note{margin:var(--s-2) 0 0; max-width:34ch; font-size:17px; line-height:1.5; color:var(--ink-soft);}
+  .day-meta{margin-top:var(--s-5);}
+  .day-meta b{font-weight:400; color:rgb(var(--lc)); transition:color .8s ease;}
+
+  /* the day line: 06:00 to 22:00, a dot with a live clock walks along it */
+  .day-line{margin-top:auto;}
+  .day-track{position:relative; height:1px; background:var(--line);}
+  .day-fill{position:absolute; left:0; top:0; height:1px; width:16.67%; background:rgb(var(--lc)); transition:background-color .8s ease;}
+  .day-mark{position:absolute; top:-4px; width:1px; height:9px; background:var(--ink-faint);}
+  .day-dot{position:absolute; top:0; left:16.67%; width:9px; height:9px; margin:-4px 0 0 -4px; border-radius:50%;
+    background:rgb(var(--lc)); box-shadow:0 0 0 4px rgba(var(--lc),.16);
+    transition:background-color .8s ease, box-shadow .8s ease;}
+  .day-dot i{position:absolute; bottom:18px; left:50%; transform:translateX(-50%); font-style:normal; color:var(--ink); white-space:nowrap;}
+  .day-ticks{position:relative; height:14px; margin-top:var(--s-3);}
+  .day-ticks span{position:absolute; transform:translateX(-50%);}
+  .day-ticks span:nth-child(1){left:0; transform:none;}
+  .day-ticks span:nth-child(2){left:18.75%;}
+  .day-ticks span:nth-child(3){left:37.5%;}
+  .day-ticks span:nth-child(4){left:56.25%;}
+  .day-ticks span:nth-child(5){left:75%;}
+  .day-ticks span:nth-child(6){left:93.75%;}
+
+  @media (max-height:700px) and (min-width:821px){ .day-note{display:none;} }
+  @media (max-width:820px){
+    /* portrait: each frame has its own focal point (--fpm) so the figure stays in view */
+    .day-shot img{object-position:var(--fpm, var(--fp,50% 50%));}
+    .day-veil{background:
+      linear-gradient(to bottom, rgba(243,243,241,.7), rgba(243,243,241,0) 46%),
+      linear-gradient(to top, rgba(243,243,241,.75), rgba(243,243,241,0) 22%);}
+    .day-ui{padding-top:84px;}
+    .day-intro, .day-scene{max-width:none; right:0;}
+    .day .section-title{font-size:clamp(30px,8.4vw,48px);}
+    .day-lead{font-size:16px; margin-top:var(--s-3);}
+    .day-time{font-size:max(var(--t-num-m),15vw);}
+    .day-title{margin-top:var(--s-4); font-size:24px;}
+    .day-note{font-size:16px;}
+    .day-meta{margin-top:var(--s-3);}
+    .day-ticks span:nth-child(even){display:none;}
+  }
+  @media (max-width:820px) and (max-height:700px){ .day-note{display:none;} }
+  @media (prefers-reduced-motion: reduce){
+    .day-shot{transform:none; transition:opacity .6s ease;}
+    .day-haze.is-on{animation:none;}
+    .day-intro, .day-scene{transform:none; filter:none;}
+  }
+
+  @media (max-width:560px){
+    .problem-head{flex-direction:column; align-items:flex-start;}
+    .head-actions{width:100%;}
+    .head-actions .btn{flex:1; justify-content:center;}
+  }
+
+  /* ================= SYSTEM (solution) ================= */
+  .system{background:var(--bg-alt);}
+  .system-head{margin-bottom:56px;}
+  .system-head p{max-width:46ch; color:var(--ink-soft); font-size:15px; margin-top:20px;}
+
+  .mode-select{
+    display:flex; gap:10px; margin-bottom:48px; flex-wrap:wrap;
+  }
+  .mode-chip{
+    border:1px solid var(--line); background:var(--surface); color:var(--ink-soft);
+    padding:12px 20px; border-radius:999px;
+    font-size:13px; font-weight:600; letter-spacing:0.02em;
+    display:flex; align-items:center; gap:10px;
+    transition:all .3s ease;
+  }
+  .mode-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--ink-faint);}
+  .mode-chip.active{background:var(--accent); color:var(--on-accent); border-color:transparent;}
+  .mode-chip.active .dot{background:var(--on-accent);}
+
+  .system-stage{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+    background:var(--surface);
+    border-radius:var(--r-lg);
+    overflow:hidden;
+    min-height:520px;
+  }
+  .system-media{position:relative; height:100%; min-height:420px;}
+  .system-media img{width:100%; height:100%; object-fit:cover;}
+  .system-copy{padding:48px 48px 48px 0; color:var(--ink);}
+  .system-copy .eyebrow{color:var(--ink-soft);}
+  .system-copy .eyebrow::before{--mark:var(--accent);}
+  .system-copy .product-name{font-family:var(--font-display); font-weight:800; font-size:clamp(30px,3.6vw,44px); text-transform:uppercase; margin-top:10px;}
+  .system-copy .product-tag{color:var(--ink-soft); font-size:15px; margin-top:16px; max-width:34ch;}
+  .system-copy .product-price{margin-top:24px; font-family:var(--font-display); font-weight:800; font-size:22px;}
+  .system-copy .price-label{font-size:12px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;}
+  .system-copy .btn{margin-top:30px;}
+
+  @media (max-width:1024px){
+    .system-stage{gap:32px;}
+    .system-copy{padding:40px 40px 40px 0;}
+  }
+  @media (max-width:860px){
+    .system-stage{grid-template-columns:1fr; border-radius:var(--r-md);}
+    .system-copy{padding:32px var(--edge) 40px;}
+    .system-media{min-height:320px;}
+  }
+  @media (max-width:480px){
+    .mode-select{flex-direction:column; align-items:stretch;}
+    .mode-chip{justify-content:flex-start;}
+  }
+
+  /* ================= FINDER: "focus the air" =================
+     One graphite world, like every other section. The atmosphere is the colour of the LIGHT
+     (JS writes --af-light), not the background. The closest mode comes into focus. */
+  .af{
+    --af-light:226,208,182;
+    --af-accent:var(--btn); --af-on-accent:var(--on-btn);
+    position:relative; overflow:hidden; isolation:isolate;
+    min-height:100vh; display:flex; align-items:center;
+    background:var(--bg); color:var(--ink);
+  }
+  .af[data-mode="focus"]{--af-accent:var(--btn); --af-on-accent:var(--on-btn);}
+  .af[data-mode="flow"]{--af-accent:var(--btn); --af-on-accent:var(--on-btn);}
+  .af[data-mode="motion"]{--af-accent:var(--btn); --af-on-accent:var(--on-btn);}
+  .af .eyebrow::before{--mark:rgb(var(--af-light));}
+  .af.section-pad{padding:var(--s-8) 0;}
+  .af-air{position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;}
+
+  /* layout: heading, field, result are separate grid items (phones: heading -> field -> result) */
+  .af-grid{
+    position:relative; z-index:1; width:100%;
+    display:grid; grid-template-columns:0.85fr 1.15fr; column-gap:var(--sp-cols); row-gap:0;
+    grid-template-areas:"copy field" "result field"; grid-template-rows:auto 1fr;
+  }
+  .af-copy{grid-area:copy; align-self:end;}
+  .af-field{grid-area:field; align-self:center;}
+  .af-result{grid-area:result; align-self:start; margin-top:var(--s-7);}
+
+  .af-lead{margin:var(--sp-text) 0 0; max-width:34ch; font-size:17px; line-height:1.55; color:var(--ink-soft);}
+
+  /* three words, one in focus: blur and opacity follow the distance to each mode */
+  .af-result-label{font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint);}
+  .af-match{color:rgb(var(--af-light));}
+  .af-words{margin-top:var(--s-4); display:flex; flex-direction:column;}
+  .af-word{
+    font-family:var(--font-display); font-weight:200; font-stretch:125%;
+    font-size:clamp(44px,5.4vw,88px); line-height:1; letter-spacing:-0.045em;
+    color:var(--ink); will-change:filter, opacity;
+  }
+  .af-desc{margin:var(--s-6) 0 0; max-width:36ch; font-size:17px; line-height:1.55; color:var(--ink-soft); transition:opacity .3s ease;}
+  .af-result.is-swapping .af-desc{opacity:0;}
+  .af-result .btn{margin-top:var(--sp-actions); background:var(--af-accent); color:var(--af-on-accent);
+    transition:background-color .6s ease, color .6s ease;}
+  .af-result .btn:hover{background:var(--af-accent); filter:brightness(1.1);}
+
+  /* the field: an instrument, not a card */
+  .af-field{
+    position:relative; justify-self:end;
+    width:100%; max-width:min(680px, 72vh); aspect-ratio:1/1;
+    cursor:crosshair; touch-action:none; user-select:none; -webkit-user-select:none; outline:none;
+  }
+  .af.is-dragging .af-field{cursor:grabbing;}
+  .af-field:focus-visible .af-dot{outline:1px solid var(--ink); outline-offset:10px;}
+  .af-axis{position:absolute; background:var(--line);}
+  .af-axis-x{left:0; right:0; top:50%; height:1px;}
+  .af-axis-y{top:0; bottom:0; left:50%; width:1px;}
+  .af-corner{position:absolute; width:16px; height:16px; border:0 solid var(--ink-faint);}
+  .af-corner.tl{left:0; top:0; border-left-width:1px; border-top-width:1px;}
+  .af-corner.tr{right:0; top:0; border-right-width:1px; border-top-width:1px;}
+  .af-corner.bl{left:0; bottom:0; border-left-width:1px; border-bottom-width:1px;}
+  .af-corner.br{right:0; bottom:0; border-right-width:1px; border-bottom-width:1px;}
+  .af-edge{position:absolute; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-faint); white-space:nowrap;}
+  .af-edge-l{left:var(--s-4); top:50%; transform:translateY(calc(-100% - 8px));}
+  .af-edge-r{right:var(--s-4); top:50%; transform:translateY(calc(-100% - 8px));}
+  .af-edge-t{top:var(--s-4); left:50%; transform:translateX(12px);}
+  .af-edge-b{bottom:var(--s-4); left:50%; transform:translateX(12px);}
+  .af-anchor{position:absolute; width:9px; height:9px; margin:-4.5px 0 0 -4.5px; border-radius:50%;
+    border:1px solid var(--ink-faint); transition:border-color .6s ease, transform .6s ease;}
+  .af-anchor i{position:absolute; left:16px; top:50%; transform:translateY(-50%);
+    font-style:normal; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-faint); white-space:nowrap; transition:color .6s ease;}
+  .af-anchor[data-anchor="motion"] i{left:auto; right:16px;}
+  .af[data-mode="focus"] [data-anchor="focus"],
+  .af[data-mode="flow"] [data-anchor="flow"],
+  .af[data-mode="motion"] [data-anchor="motion"]{border-color:var(--ink); transform:scale(1.4);}
+  .af[data-mode="focus"] [data-anchor="focus"] i,
+  .af[data-mode="flow"] [data-anchor="flow"] i,
+  .af[data-mode="motion"] [data-anchor="motion"] i{color:var(--ink);}
+
+  /* the light */
+  .af-dot{
+    position:absolute; left:36%; top:62%; width:16px; height:16px; margin:-8px 0 0 -8px;
+    border-radius:50%; background:rgb(var(--af-light)); z-index:3; cursor:grab;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.35), 0 0 36px 10px rgba(var(--af-light),0.55);
+  }
+  .af-dot::after{content:""; position:absolute; inset:-14px; border-radius:50%;
+    border:1px solid rgba(var(--af-light),0.6); animation:af-ping 2.4s ease-out infinite;}
+  .af.is-touched .af-dot::after{animation:none; opacity:0;}
+  @keyframes af-ping{ 0%{transform:scale(.6); opacity:.9;} 100%{transform:scale(2.2); opacity:0;} }
+  .af-hint{position:absolute; left:28px; top:50%; transform:translateY(-50%);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--ink); white-space:nowrap; transition:opacity .4s ease;}
+  .af.is-touched .af-hint{opacity:0;}
+  .af-readout{position:absolute; right:0; bottom:calc(-1 * var(--s-6));
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; color:var(--ink-faint);
+    font-variant-numeric:tabular-nums;}
+
+  @media (max-width:900px){
+    .af{min-height:0;}
+    .af-grid{grid-template-columns:1fr; grid-template-areas:"copy" "field" "result"; grid-template-rows:auto; row-gap:var(--s-7);}
+    .af-field{justify-self:stretch; max-width:none;}
+    .af-result{margin-top:0;}
+    .af-edge-t, .af-edge-b{transform:translateX(8px);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .af-dot::after{animation:none;}
+  }
+
+  /* ================= SPEC SHEET: a printed datasheet =================
+     The page's light chapter. Scale contrast on purpose: four big numbers on leader lines,
+     everything else is 11px mono fine print. */
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+  /* 2026-09-27 v2: cooler, lighter paper (Apple compare): grey-white page, white "lit" column and
+     a white mount around the photo instead of graphite fills. */
+  .specs{
+    --paper:#F3F3F1; --card:#FFFFFF;
+    --bg:var(--paper); --ink:#1D1D1F; --ink-soft:#6E6E73; --ink-faint:#8E8E93; --line:rgba(29,29,31,.10);
+    --accent:#1D1D1F;
+    background:var(--paper); color:var(--ink);
+  }
+  .specs ::selection{background:#1D1D1F; color:#fff;}
+
+  .sheet-bar{
+    display:flex; justify-content:space-between; gap:var(--s-5); padding-bottom:var(--s-3); border-bottom:1px solid var(--line);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+  }
+  .sheet-head{display:flex; justify-content:space-between; align-items:flex-end; gap:var(--sp-cols); margin-top:var(--s-8);}
+  .sheet-head .section-title{margin:0;}
+
+  .sheet-tabs{display:flex; border-top:1px solid var(--line);}
+  .sheet-tab{
+    display:grid; grid-template-columns:auto auto; grid-template-rows:auto auto; column-gap:var(--s-3); row-gap:var(--s-1);
+    text-align:left; padding:var(--s-4) var(--s-6) 0 0; margin-right:var(--s-6); background:none; border:0; border-top:2px solid transparent;
+    margin-top:-1px; color:var(--ink-faint); cursor:pointer; transition:color .4s ease, border-color .4s ease;
+  }
+  .sheet-tab .st-idx{grid-row:1 / span 2; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; padding-top:6px;}
+  .sheet-tab .st-name{font-size:clamp(22px,2vw,28px); font-weight:500; letter-spacing:-0.03em; line-height:1;}
+  .sheet-tab .st-price{font-family:var(--font-mono); font-size:11px; letter-spacing:.1em;}
+  .sheet-tab:hover{color:var(--ink-soft);}
+  .sheet-tab.is-on{color:var(--ink); border-top-color:var(--ink);}
+  .sheet-tab:focus-visible{outline:1px solid var(--ink); outline-offset:4px;}
+
+  /* the figure: product in the middle, four numbers pulled out on leader lines */
+  .sheet-fig{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.95fr) minmax(0,1fr); align-items:center;
+    margin-top:var(--s-9);
+  }
+  .sheet-side{display:flex; flex-direction:column; gap:clamp(64px,9vw,140px);}
+  .co{display:flex; align-items:flex-start; gap:var(--s-4);}
+  .co-l{text-align:right;}
+  .co-text{flex-shrink:0;}
+  .co-v{display:flex; align-items:baseline; gap:6px; font-size:clamp(40px,4.4vw,64px); font-weight:500; letter-spacing:-0.045em; line-height:.95;}
+  .co-l .co-v{justify-content:flex-end;}
+  .co-v span{font-size:.36em; font-weight:500; letter-spacing:-0.01em; color:var(--ink-soft);}
+  .co-k{margin-top:var(--s-2); font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);}
+  .co-line{flex:1; position:relative; height:1px; margin-top:clamp(20px,2.2vw,32px); background:rgba(29,29,31,.28); transform-origin:right center;
+    transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+  .co-r .co-line{transform-origin:left center;}
+  .co-line::after{content:""; position:absolute; top:-3px; width:7px; height:7px; border-radius:50%; background:var(--ink);}
+  .co-l .co-line::after{right:-3px;}
+  .co-r .co-line::after{left:-3px;}
+  .co-text > *{transition:opacity .35s ease, transform .5s cubic-bezier(.2,.7,.2,1);}
+  .sheet-fig.is-swapping .co-text > *{opacity:0; transform:translateY(10px);}
+  .sheet-fig.is-swapping .co-line{transform:scaleX(0); transition-duration:.2s;}
+
+  /* the product is cut out and sits on the paper itself: no mount, one soft contact shadow below */
+  .sheet-plate{position:relative; margin:0; aspect-ratio:4/5;}
+  .sheet-plate::before{content:""; position:absolute; left:10%; right:10%; bottom:7%; height:8%; border-radius:50%;
+    background:radial-gradient(closest-side, rgba(29,29,31,.16), rgba(29,29,31,0)); filter:blur(6px);}
+  .sheet-shot{position:absolute; top:-14%; left:-26%; width:152%; max-width:none; height:122%; object-fit:contain; opacity:0; transform:translateY(14px) scale(.98);
+    filter:drop-shadow(0 18px 24px rgba(29,29,31,.10));
+    transition:opacity .7s ease, transform 1.4s cubic-bezier(.2,.7,.2,1);}
+  .sheet-shot.is-on{opacity:1; transform:none;}
+  .sheet-plate figcaption{position:absolute; left:0; top:100%; margin-top:var(--s-3);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);}
+
+  /* the fine print */
+  .sheet-table-wrap{margin-top:var(--s-10); overflow-x:auto;}
+  .sheet-table{width:100%; min-width:560px; border-collapse:collapse; font-size:15px;}
+  .sheet-table th, .sheet-table td{padding:var(--s-3) var(--s-4); text-align:left; border-top:1px solid var(--line); font-weight:400;}
+  .sheet-table thead th{border-top:0; padding-top:var(--s-5); font-weight:500; font-size:17px; letter-spacing:-0.02em;}
+  .sheet-table tbody th{width:18%; padding-left:0; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);}
+  .sheet-table td, .sheet-table thead th[data-mode]{color:var(--ink-faint); cursor:pointer; transition:background-color .5s ease, color .4s ease, box-shadow .5s ease;}
+  /* the lit column: a white card lifted off the paper, not a black fill */
+  .sheet-table .is-on{background:var(--card); color:var(--ink) !important; box-shadow:1px 0 0 var(--line), -1px 0 0 var(--line);}
+  .sheet-table tbody td.is-on{border-top-color:rgba(29,29,31,.06);}
+  .sheet-table td:not(.is-on):hover, .sheet-table thead th[data-mode]:not(.is-on):hover{color:var(--ink);}
+  /* finish swatches */
+  .sw{display:inline-block; width:12px; height:12px; margin-right:10px; border-radius:50%; vertical-align:-1px; box-shadow:inset 0 0 0 1px rgba(29,29,31,.14);}
+  .sw-basalt{background:#3A3B3E;} .sw-trav{background:#CDBFAC;} .sw-bone{background:#ECEAE4;}
+
+  .sheet-actions{display:flex; align-items:center; gap:var(--s-6); flex-wrap:wrap; margin-top:var(--s-7);}
+  .sheet-actions .btn{background:#1D1D1F; color:#fff;}
+  .sheet-note{font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);}
+
+  @media (max-width:900px){
+    .sheet-bar span:nth-child(3){display:none;}
+    .sheet-head{flex-direction:column; align-items:flex-start; margin-top:var(--s-7);}
+    .sheet-tabs{width:100%;}
+    .sheet-tab{flex:1; padding-right:0; margin-right:var(--s-4);}
+    .sheet-fig{grid-template-columns:1fr 1fr; grid-template-areas:"plate plate" "left right"; row-gap:var(--s-8); margin-top:var(--s-7);}
+    .sheet-plate{grid-area:plate; aspect-ratio:4/3;}
+    .sheet-left{grid-area:left;} .sheet-right{grid-area:right;}
+    .sheet-side{gap:var(--s-6);}
+    .co-line{display:none;}
+    .co{min-width:0;} .co-text{flex-shrink:1; min-width:0;} /* labels wrap instead of running into the next column */
+    .co-l{text-align:left;} .co-l .co-v{justify-content:flex-start;}
+    .co-v{font-size:clamp(36px,11vw,48px);}
+    .sheet-table-wrap{margin:var(--s-8) calc(var(--edge) * -1) 0; padding:0 var(--edge);}
+  }
+  @media (max-width:520px){
+    .sheet-bar span:nth-child(1){display:none;}
+    .sheet-actions .btn{width:100%; justify-content:space-between;}
+  }
+
+  /* ================= FINAL CTA ================= */
+  .final-cta{
+    padding:0;
+  }
+  .fc-frame{
+    position:relative;
+    overflow:hidden;
+    min-height:800px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:120px 24px;
+    background:
+      radial-gradient(ellipse 70% 65% at 50% 38%, rgba(50,52,56,0.4) 0%, rgba(10,10,12,0) 70%),
+      linear-gradient(165deg, #101113 0%, #08090a 50%, #000000 100%);
+  }
+  .fc-canvas{
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%; display:block;
+  }
+  .fc-frame::before{
+    content:"";
+    position:absolute; inset:0; z-index:1;
+    background:radial-gradient(ellipse 60% 55% at 50% 40%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+    pointer-events:none;
+  }
+  .fc-content{
+    position:relative; z-index:2;
+    max-width:720px; text-align:center;
+  }
+  .fc-content .section-title{ text-align:center; margin:0 auto; }
+  .final-cta p{ color:rgba(245,244,240,0.75); max-width:44ch; margin:22px auto 0; text-align:center; }
+  .fc-actions{ display:flex; gap:14px; justify-content:center; margin-top:32px; flex-wrap:wrap; }
+  @media (max-width:600px){
+    .fc-frame{min-height:560px; padding:72px 20px;}
+  }
+  @media (max-width:480px){
+    .fc-actions .btn{flex:1; justify-content:center;}
+  }
+
+  .final-cta{--lc:226,208,182;}
+  .final-cta .fc-frame{
+    min-height:100vh; padding:var(--sp-section) var(--edge);
+    background:var(--bg);
+  }
+  /* one light from above, the colour of the mode you chose */
+  .final-cta .fc-frame::before{
+    background:radial-gradient(ellipse 46% 62% at 50% -8%, rgba(var(--lc),.16) 0%, rgba(var(--lc),.05) 45%, rgba(var(--lc),0) 72%);
+    transition:background .9s ease;
+  }
+  .final-cta .fc-sub{margin:var(--s-5) auto 0; color:var(--ink-soft); font-size:clamp(17px,1.4vw,20px); font-weight:300;}
+
+  /* the engraving: the same three lines as on the hinge. Your mode is lit and cut deeper */
+  .fc-eyebrow{justify-content:center;}
+  .fc-mark{display:inline-flex; flex-direction:column; gap:var(--s-2); margin:var(--s-7) auto 0;}
+  .fc-line{display:flex; align-items:center; gap:var(--s-5); background:none; border:0; padding:var(--s-2) 0; cursor:pointer; color:var(--ink-faint);}
+  .fc-line[data-mode="focus"]{--lc:214,226,240;}
+  .fc-line[data-mode="flow"]{--lc:226,208,182;}
+  .fc-line[data-mode="motion"]{--lc:255,241,220;}
+  .fc-line::before{content:""; width:88px; flex-shrink:0;}   /* balances the label, keeps the strokes centred */
+  .fc-stroke{
+    width:clamp(160px,22vw,280px); height:2px; background:rgba(242,243,244,.2);
+    transform:scaleX(0); transform-origin:left center;
+    transition:transform 1.2s cubic-bezier(.2,.7,.2,1), background-color .6s ease, box-shadow .6s ease, height .4s ease;
+  }
+  .final-cta.is-in .fc-stroke{transform:scaleX(1);}
+  .final-cta.is-in .fc-line:nth-child(2) .fc-stroke{transition-delay:.12s, 0s, 0s, 0s;}
+  .final-cta.is-in .fc-line:nth-child(3) .fc-stroke{transition-delay:.24s, 0s, 0s, 0s;}
+  .fc-label{width:88px; flex-shrink:0; text-align:left; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; transition:color .6s ease;}
+  .fc-line:hover .fc-stroke{background:rgba(242,243,244,.45);}
+  .fc-line.is-on .fc-stroke{height:3px; background:rgb(var(--lc)); box-shadow:0 0 18px 2px rgba(var(--lc),.45);}
+  .fc-line.is-on .fc-label{color:rgb(var(--lc));}
+  .fc-line:focus-visible{outline:1px solid var(--ink-soft); outline-offset:4px;}
+
+  .final-cta .fc-lead{margin:var(--s-6) auto 0; max-width:40ch; color:var(--ink-soft);}
+  .fc-actions{align-items:center; gap:var(--s-6); margin-top:var(--sp-actions);}
+  .fc-actions .btn{background:var(--btn); color:var(--on-btn);}
+  .fc-link{font-family:var(--font-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+    text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:6px; transition:color .25s ease, text-decoration-color .25s ease;}
+  .fc-link:hover{color:var(--ink); text-decoration-color:var(--ink-soft);}
+  .final-cta .fc-trust{margin-top:var(--s-7); font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); max-width:none;}
+  @media (max-width:600px){
+    .fc-line::before{display:none;}
+    .fc-stroke{width:52vw;}
+    .fc-actions{flex-direction:column; gap:var(--s-5);}
+    .fc-actions .btn{width:100%; justify-content:space-between;}
+    .final-cta .fc-trust{line-height:2;}
+  }
+
+  /* ================= FOOTER ================= */
+  footer{background:#000000; color:rgba(255,255,255,0.8); padding:80px var(--edge) 30px; border-top:1px solid var(--line);}
+  .footer-grid{
+    max-width:var(--maxw); margin:0 auto;
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr; gap:32px;
+    padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .footer-logo{font-family:var(--font-display); font-weight:800; font-size:22px; color:var(--white);}
+  .footer-tag{margin-top:16px; font-size:14px; color:rgba(255,255,255,0.5); max-width:26ch;}
+  .footer-col h3{font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.45); margin-bottom:16px; font-weight:600;}
+  .footer-col a{display:block; font-size:14px; color:rgba(255,255,255,0.75); margin-bottom:12px;}
+  .footer-col a:hover{color:var(--white);}
+  .footer-newsletter input{
+    width:100%; padding:12px 14px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);
+    border-radius:var(--r-sm); color:var(--white); font-size:13px; margin-bottom:10px;
+  }
+  .footer-newsletter button{ font-family:inherit; cursor:pointer; }
+  .footer-bottom{
+    max-width:var(--maxw); margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding-top:26px; flex-wrap:wrap; gap:14px;
+    font-size:12.5px; color:rgba(255,255,255,0.45);
+  }
+  .footer-legal a{ color:rgba(255,255,255,0.45); }
+  .footer-legal a:hover{ color:var(--white); }
+  @media (max-width:1024px){
+    .footer-grid{grid-template-columns:1fr 1fr 1fr; row-gap:36px;}
+    .footer-grid > div:first-child{grid-column:1 / -1;}
+  }
+  @media (max-width:600px){
+    .footer-grid{grid-template-columns:1fr 1fr; row-gap:32px;}
+    .footer-grid > div:first-child{grid-column:1 / -1;}
+    footer{padding:56px var(--edge) 26px;}
+  }
+
+  /* ================= INFO MODAL ================= */
+  .info-modal{
+    position:fixed; inset:0; z-index:300;
+    display:none; align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .info-modal.open{ display:flex; }
+  .info-modal-backdrop{
+    position:absolute; inset:0;
+    background:rgba(5,5,6,0.72);
+    backdrop-filter:blur(4px);
+  }
+  .info-modal-card{
+    position:relative; z-index:1;
+    width:100%; max-width:440px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--r-lg);
+    padding:36px;
+    text-align:left;
+  }
+  .info-modal-card h3{ font-size:24px; margin-top:14px; text-transform:none; }
+  .info-modal-card p{ margin-top:14px; font-size:14px; line-height:1.6; color:var(--ink-soft); }
+  .info-modal-card .btn{ margin-top:24px; width:100%; justify-content:center; }
+  .info-modal-close{
+    position:absolute; top:20px; right:20px;
+    width:36px; height:36px; border-radius:50%;
+    background:var(--bg-alt); border:1px solid var(--line); color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .info-modal-close svg{ width:16px; height:16px; }
+  .modal-input{
+    width:100%; padding:12px 14px; background:rgba(255,255,255,0.05); border:1px solid var(--line);
+    border-radius:var(--r-sm); color:var(--ink); font-size:16px; margin:18px 0 12px; /* 16px: iOS Safari zooms into smaller inputs */
+  }
+  @media (max-width:480px){
+    .info-modal-card{ padding:28px 24px; }
+    .info-modal-close{ width:44px; height:44px; top:14px; right:14px; }
+  }
+
+  ::selection{background:var(--accent-1); color:#fff;}
+
+  /* ================= ART DIRECTION PASS 1: type + color =================
+     Concept "Three atmospheres". Light, quiet type; data in mono; no gradients. */
+  h1,h2,h3,h4{font-weight:300; letter-spacing:-0.03em; line-height:1.0;}
+  .section-title{text-transform:none; font-size:clamp(36px,5.2vw,72px); max-width:16ch;}
+  @media (max-width:480px){ .section-title{font-size:clamp(32px,9vw,40px);} }
+  .hero h1{text-transform:none; font-size:clamp(52px,9vw,144px); max-width:12ch; letter-spacing:-0.04em;}
+  .hero-sub{font-weight:300; color:rgba(255,255,255,0.78);}
+  .hero-media::before{display:none;}            /* no blue/teal wash over the hero */
+  .hero-media img, .hero-media video{filter:grayscale(60%) contrast(1.05);}
+
+  /* mono for eyebrows, labels, numbers, specs */
+  .eyebrow, .hero-eyebrow, .hero-state-tab .num, .price-label,
+  .finder-result .fr-label, .plane-anchor .anchor-label, .slider-row label,
+  .dd-spec .k, .anc-demo .anc-top, .dd-price-badge, .footer-col h3,
+  table.compare th.rowlabel, table.compare td.rowlabel, .nav-modes button{
+    font-family:var(--font-mono); font-weight:400; letter-spacing:0.08em;
+  }
+  .eyebrow{font-size:11px; color:var(--ink-faint);}
+  .system-copy .product-price, .dd-spec .v, .anc-demo .anc-db, table.compare td.val{
+    font-family:var(--font-mono); font-weight:400; letter-spacing:0;
+  }
+
+  /* display type: light, sentence case */
+  .logo, .footer-logo{font-weight:400; letter-spacing:0.28em;}
+  .hero-state-tab .label, .problem-card .tag .situation, .system-copy .product-name,
+  .finder-result .fr-name, .dd-tab, .mm-links a, table.compare thead th{
+    text-transform:none; font-weight:400; letter-spacing:-0.01em;
+  }
+  .system-copy .product-name{font-weight:300; font-size:clamp(36px,4.4vw,60px); letter-spacing:-0.03em;}
+  .finder-result .fr-name{font-weight:300; font-size:clamp(40px,5vw,64px); letter-spacing:-0.03em;}
+  .grad-text{background:none; color:var(--ink);}
+  .system-head p, .finder-copy p, .dd-copy .dd-sub{font-size:17px; line-height:1.55;}
+
+  /* buttons: one quiet solid primary, everything else outline */
+  .btn{font-weight:500; font-size:14px; letter-spacing:0; padding:15px 28px;}
+  .btn:hover{filter:none; background:var(--white); transform:none;}
+  .btn.btn-outline:hover{background:rgba(255,255,255,0.06); transform:none;}
+  header.nav .nav-right > .btn{background:transparent; color:var(--ink); border-color:var(--line);}
+  header.nav .nav-right > .btn:hover{border-color:var(--ink-soft); background:rgba(255,255,255,0.04);}
+
+  /* chips/tabs: active state = thin light outline, not a filled pill */
+  .nav-modes button.active, .mm-modes button.active, .mode-chip.active, .ct-chip.on{
+    background:transparent; color:var(--ink); border:1px solid var(--focus);
+  }
+  .nav-modes button{border:1px solid transparent;}
+  .mode-chip.active .dot{background:var(--focus);}
+  .icon-circle:hover{background:transparent; color:var(--ink); border-color:var(--ink-soft);}
+
+  /* finder dot: cold light instead of blue/teal glow */
+  .plane-dot{background:var(--focus); box-shadow:0 0 0 1px rgba(221,227,234,0.4), 0 0 24px 6px rgba(221,227,234,0.25); animation:none;}
+
+  ::selection{background:var(--focus); color:var(--on-accent);}
+
+  /* ================= HERO: three atmospheres =================
+     Each tab (Focus / Flow / Motion) swaps the product shot AND the air around it:
+     light, text colour, button colour, veil. */
+  .hero{
+    --h-ink:#F2F3F4; --h-soft:rgba(242,243,244,0.72); --h-line:rgba(242,243,244,0.22);
+    --h-accent:var(--btn); --h-on-accent:var(--on-btn); --h-veil:10,11,13;
+    color:var(--h-ink);
+    transition:color .9s ease;
+  }
+  .hero[data-atmo="flow"]{
+    --h-ink:#F6EEE6; --h-soft:rgba(246,238,230,0.74); --h-line:rgba(246,238,230,0.24);
+    --h-accent:var(--btn); --h-on-accent:var(--on-btn); --h-veil:20,18,16;
+  }
+  .hero[data-atmo="motion"]{
+    --h-ink:#111110; --h-soft:rgba(17,17,16,0.72); --h-line:rgba(17,17,16,0.22);
+    --h-accent:#111110; --h-on-accent:var(--bone); --h-veil:176,169,160;
+  }
+  .hero-shot{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:right center;
+    opacity:0; transform:scale(1.06);
+    transition:opacity 1.2s ease, transform 7s cubic-bezier(.2,.6,.2,1);
+    filter:none !important;
+  }
+  .hero-shot.is-on{opacity:1; transform:scale(1);}
+  /* film grain: ties the three shots into one series */
+  .hero-media::before{
+    display:block; content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    opacity:.09; mix-blend-mode:overlay;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Motion only: leaf shadows sway in moving air, the one live element in the hero */
+  .hero-leaves{
+    position:absolute; inset:-8% -6%; pointer-events:none;
+    background:url("images/soft_leaf_shadows.webp") center/cover no-repeat;
+    mix-blend-mode:multiply;
+    opacity:0; transition:opacity 1.2s ease;
+    transform-origin:50% 0;
+    animation:leaves-sway 9s ease-in-out infinite alternate paused;
+  }
+  .hero[data-atmo="motion"] .hero-leaves{opacity:.5; animation-play-state:running;}
+  @keyframes leaves-sway{
+    0%  { transform:scaleX(-1) translate3d(0,0,0) rotate(0deg) skewX(0deg); }
+    35% { transform:scaleX(-1) translate3d(-1.2%,.6%,0) rotate(.8deg) skewX(-1.5deg); }
+    70% { transform:scaleX(-1) translate3d(.8%,-.4%,0) rotate(-.5deg) skewX(1deg); }
+    100%{ transform:scaleX(-1) translate3d(-.6%,.3%,0) rotate(.4deg) skewX(-.6deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-leaves{animation:none; transform:scaleX(-1);}
+  }
+  .hero-shot[data-shot="flow"]{transform-origin:70% 60%;}
+  .hero h1{font-size:clamp(52px,7.4vw,116px);}
+  /* keep every product clear of the headline: shots are pushed right and scaled from the right edge */
+  .hero-shot[data-shot="flow"], .hero-shot[data-shot="motion"]{transform-origin:right center;}
+  @media (min-width:701px){
+    .hero-shot{left:auto; right:0; width:100%; max-width:none;}
+    .hero-shot[data-shot="flow"]{width:112%; right:-10%;}
+    .hero-shot[data-shot="motion"]{width:134%; right:-34%;}  /* near bud cropped by the edge, far bud clear of the headline */
+  }
+  /* veil only where the text sits, tinted by the current atmosphere */
+  .hero-media::after{
+    background:
+      linear-gradient(90deg, rgba(var(--h-veil),0.78) 0%, rgba(var(--h-veil),0.35) 38%, rgba(var(--h-veil),0) 60%),
+      linear-gradient(0deg, rgba(var(--h-veil),0.55) 0%, rgba(var(--h-veil),0) 30%);
+    z-index:1; transition:background .9s ease;
+  }
+  .hero-inner{color:var(--h-ink);}
+  .hero h1{color:var(--h-ink); transition:color .9s ease;}
+  .hero-eyebrow{color:var(--h-soft);}
+  .hero-sub{color:var(--h-soft); transition:color .9s ease, opacity .4s ease;}
+  .hero-sub.is-swapping{opacity:0;}
+
+  .hero-cta-row{gap:28px;}
+  .hero-cta-row .btn{
+    background:var(--h-accent); color:var(--h-on-accent); border-color:transparent;
+    transition:background .9s ease, color .9s ease;
+  }
+  .hero-cta-row .btn:hover{background:var(--h-accent); filter:brightness(1.08);}
+  .hero-cta-row .btn svg{transition:transform .3s ease;}
+  .hero-cta-row .btn:hover svg{transform:translateX(4px);}
+  .hero-link{
+    font-size:14px; font-weight:500; color:var(--h-ink);
+    padding-bottom:3px; border-bottom:1px solid var(--h-line);
+    transition:border-color .3s ease, color .9s ease;
+  }
+  .hero-link:hover{border-color:var(--h-ink);}
+  .hero-trust{
+    margin:22px 0 0; font-family:var(--font-mono); font-size:11px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--h-soft);
+  }
+
+  /* tabs: the active line fills over the auto-advance interval, like a progress bar */
+  .hero-states{border-top-color:var(--h-line);}
+  .hero-state-tab{color:var(--h-soft); transition:color .9s ease;}
+  .hero-state-tab.active{color:var(--h-ink);}
+  .hero-state-tab::before{background:var(--h-accent); transition:none;}
+  .hero-state-tab.active::before{width:100%; transition:width var(--hero-interval,5200ms) linear, background .9s ease;}
+  .hero.is-paused .hero-state-tab.active::before{transition:none;}
+
+  /* header over the light Motion shot (only while it is transparent) */
+  header.nav[data-atmo="motion"]:not(.scrolled){
+    --ink:#111110; --ink-soft:rgba(17,17,16,0.72); --line:rgba(17,17,16,0.2); --surface:rgba(255,255,255,0.35);
+  }
+  header.nav{transition:background .35s ease, padding .35s ease, border-color .35s ease, color .9s ease;}
+
+  /* mobile: product on top, text below it, the shot fades into the atmosphere colour */
+  @media (max-width:700px){
+    .hero{background:rgb(var(--h-veil)); transition:background .9s ease, color .9s ease; padding-top:44vh;}
+    .hero-media{bottom:auto; height:50vh;}
+    .hero-shot{object-position:80% 60%;}
+    .hero-shot[data-shot="focus"]{object-position:100% 70%;}
+    .hero-media::after{
+      background:linear-gradient(180deg, rgba(var(--h-veil),0) 45%, rgba(var(--h-veil),1) 100%);
+    }
+    .hero-cta-row{gap:20px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-shot{transform:none !important;}
+  }
+
+  /* reveal on view */
+  /* a calm rise; haze is kept only for the "air" chapters (Situation, Finder) */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .9s ease-out, transform 1.2s cubic-bezier(.19,1,.22,1);}
+  .reveal.in{opacity:1; transform:none;}
+  .day .reveal, .af .reveal{transform:none; filter:blur(12px); transition:opacity .8s ease-out, filter .8s ease-out;}
+  .day .reveal.in, .af .reveal.in{filter:none;}
+  .problem-grid .reveal:nth-child(2){transition-delay:.12s;}
+  .problem-grid .reveal:nth-child(3){transition-delay:.24s;}
+
+  /* ================= PASS 2: Mona Sans, buttons, System =================
+     Display type is wide and light (air), body stays normal width for reading. */
+  h1,h2,h3,h4{font-stretch:112%; font-weight:280;}
+  .hero h1{font-stretch:115%; font-weight:250; font-size:clamp(44px,6.4vw,100px); letter-spacing:-0.035em;}
+  .section-title{letter-spacing:-0.03em;}
+  .fact-num{font-stretch:125%; font-weight:220; letter-spacing:-0.03em;}
+  .logo, .footer-logo{font-stretch:125%;}
+  .hero-state-tab .label, .problem-card .tag .situation, .dd-tab, .mm-links a, table.compare thead th{font-stretch:108%;}
+  .system-copy .product-name, .finder-result .fr-name{font-stretch:115%; font-weight:250;}
+
+  /* Situation: no rule above the index */
+  .problem-card .tag .atmo-idx{border-top:0; padding-top:0;}
+
+  /* buttons: square, mono caps, the arrow does the moving */
+  .btn{
+    border-radius:0; font-family:var(--font-mono); font-weight:400; font-size:12px;
+    letter-spacing:0.1em; text-transform:uppercase; padding:17px 22px; gap:28px;
+  }
+  .btn svg{transition:transform .35s cubic-bezier(.2,.7,.2,1);}
+  .btn:hover svg{transform:translateX(4px);}
+  .hero-link{font-family:var(--font-mono); font-size:12px; font-weight:400; letter-spacing:0.1em; text-transform:uppercase;}
+
+  /* ---- System: one section, three kinds of air ---- */
+  .system{
+    --s-bg:#0E1014; --s-ink:#F2F3F4; --s-soft:rgba(242,243,244,0.70); --s-faint:rgba(242,243,244,0.45);
+    --s-line:rgba(242,243,244,0.14); --s-signal:var(--focus); --s-btn:var(--btn); --s-on-btn:var(--on-btn);
+    --s-tint:#6F8499; --s-tint-op:.45; --s-bright:.62; --s-glow:rgba(221,227,234,0.10);
+    --ink:var(--s-ink); --ink-soft:var(--s-soft); --ink-faint:var(--s-faint); --line:var(--s-line); --accent:var(--s-signal);
+    background:var(--s-bg); color:var(--s-ink);
+    transition:background-color .8s ease, color .8s ease;
+    overflow:hidden;
+  }
+  .system[data-atmo="flow"]{
+    --s-bg:#15130F; --s-ink:#F4EFE8; --s-soft:rgba(246,238,230,0.72); --s-faint:rgba(246,238,230,0.46);
+    --s-line:rgba(246,238,230,0.16); --s-signal:var(--flow); --s-btn:var(--btn); --s-on-btn:var(--on-btn);
+    --s-tint:#9C8B74; --s-tint-op:.4; --s-bright:.6; --s-glow:rgba(205,187,160,0.12);
+  }
+  .system[data-atmo="motion"]{
+    --s-bg:var(--bone); --s-ink:#111110; --s-soft:rgba(17,17,16,0.70); --s-faint:rgba(17,17,16,0.48);
+    --s-line:rgba(17,17,16,0.14); --s-signal:var(--motion); --s-btn:#111110; --s-on-btn:var(--bone);
+    --s-tint:#C9B89A; --s-tint-op:.35; --s-bright:1.3; --s-glow:rgba(255,255,255,0.5);
+  }
+  .system .eyebrow, .system-head p, .sys-tab, .sys-tab-note, .sys-tab-idx, .sys-air,
+  .system-copy .product-tag, .system-copy .price-label{transition:color .8s ease, opacity .4s ease;}
+  .system-head{margin-bottom:0;}
+
+  .sys-tabs{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,3vw,48px);
+    margin:clamp(48px,7vw,96px) 0 clamp(8px,2vw,24px);
+  }
+  .sys-tab{
+    display:flex; flex-direction:column; align-items:flex-start; gap:8px;
+    background:none; border:0; padding:0; text-align:left; color:var(--ink);
+    opacity:.34;
+  }
+  .sys-tab:hover{opacity:.7;}
+  .sys-tab.active{opacity:1;}
+  .sys-tab:focus-visible{outline:1px solid var(--ink-soft); outline-offset:8px;}
+  .sys-tab-idx{font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; color:var(--ink-faint);}
+  .sys-tab.active .sys-tab-idx{color:var(--s-signal);}
+  .sys-tab-name{
+    font-family:var(--font-display); font-weight:250; font-stretch:118%;
+    font-size:clamp(32px,4.6vw,68px); line-height:1; letter-spacing:-0.035em;
+  }
+  .sys-tab-note{font-size:14px; color:var(--ink-soft);}
+
+  .system-stage{
+    grid-template-columns:1.2fr 0.8fr; gap:clamp(24px,4vw,64px);
+    background:none; border-radius:0; overflow:visible; min-height:0;
+  }
+  /* catalogue shots on grey: the grey plate is dissolved into a pool of light,
+     then the frame is graded to the atmosphere (same trick as the Situation photos) */
+  .system-media{
+    position:relative; aspect-ratio:4/3; min-height:0; height:auto;
+    margin-left:calc(var(--edge) * -1);
+    -webkit-mask-image:radial-gradient(ellipse 60% 62% at 50% 54%, #000 22%, rgba(0,0,0,.55) 48%, transparent 76%);
+            mask-image:radial-gradient(ellipse 60% 62% at 50% 54%, #000 22%, rgba(0,0,0,.55) 48%, transparent 76%);
+  }
+  .system-media::before{
+    content:""; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(ellipse 50% 50% at 50% 50%, var(--s-glow), transparent 70%);
+    transition:background .8s ease;
+  }
+  .system-media::after{
+    content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:var(--s-tint); mix-blend-mode:color; opacity:var(--s-tint-op);
+    transition:background-color .8s ease, opacity .8s ease;
+  }
+  .sys-shot{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;
+    filter:grayscale(1) contrast(1.12) brightness(var(--s-bright));
+    opacity:0; transform:scale(1.04);
+    transition:opacity .9s ease, transform 1.4s cubic-bezier(.2,.6,.2,1), filter .8s ease;
+  }
+  .sys-shot.is-on{opacity:1; transform:scale(1);}
+
+  .system-copy{padding:0; color:var(--ink); transition:opacity .35s ease, transform .5s cubic-bezier(.2,.7,.2,1);}
+  .system-copy.is-swapping{opacity:0; transform:translateY(10px);}
+  .sys-air{font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--s-signal);}
+  .system-copy .product-name{margin-top:18px; font-size:clamp(40px,4.6vw,64px);}
+  .system-copy .product-tag{margin:20px 0 0; font-size:17px; line-height:1.55; max-width:34ch;}
+  .sys-buy{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-top:40px;}
+  .system-copy .price-label{margin:0 0 6px;}
+  .system-copy .product-price{margin:0; font-size:28px; letter-spacing:-0.01em;}
+  .system-copy .btn{margin-top:0; background:var(--s-btn); color:var(--s-on-btn); transition:background-color .8s ease, color .8s ease;}
+  .system-copy .btn:hover{background:var(--s-btn); filter:brightness(1.1);}
+
+  @media (max-width:860px){
+    .system-stage{grid-template-columns:1fr; gap:8px;}
+    .system-media{margin:0 calc(var(--edge) * -1);}
+    .system-copy{padding:0;}
+  }
+  @media (max-width:640px){
+    .sys-tabs{gap:12px;}
+    .sys-tab-note{display:none;}
+    .sys-tab-name{font-size:clamp(24px,7.4vw,32px); font-stretch:108%;}
+    .sys-buy .btn{flex:1 1 100%; justify-content:space-between;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .sys-shot{transform:none !important;}
+  }
+  /* System: cut-out product (images/prod-*.webp) floating over the section's own background,
+     which changes with the mode. One soft pool of light behind it, a shadow under it. */
+  .system-media{-webkit-mask-image:none; mask-image:none;}
+  .system-media::after{display:none;}
+  .system-media::before{display:block; inset:6% 10%; border-radius:50%;
+    background:radial-gradient(closest-side, var(--s-glow), transparent 100%);}
+  /* .system-media .sys-shot, not .sys-shot: the old ".system-media img{object-fit:cover}" outranked
+     it and cropped the square render to 4:3 (headband and cushions cut flat) */
+  .system-media .sys-shot{inset:5% 8%; width:84%; height:90%; object-fit:contain;
+    filter:drop-shadow(0 34px 44px rgba(0,0,0,.28));}
+  /* secondary hero action: same shape as the primary, no fill, lighter border */
+  .hero{--h-border:rgba(242,243,244,0.38);}
+  .hero[data-atmo="flow"]{--h-border:rgba(246,238,230,0.40);}
+  .hero[data-atmo="motion"]{--h-border:rgba(17,17,16,0.32);}
+  .hero-cta-row{gap:12px;}
+  .hero-link{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:17px 22px; line-height:1.5; border:1px solid var(--h-border);
+    color:var(--h-ink); white-space:nowrap;
+    transition:border-color .3s ease, background-color .3s ease, color .9s ease;
+  }
+  .hero-link:hover{border-color:var(--h-ink); background:rgba(var(--h-veil),0.35);}
+  @media (max-width:480px){ .hero-link{flex:1;} }
+  /* ================= SPACING SYSTEM =================
+     One 8pt scale + semantic steps. Every text stack follows the same rhythm:
+     label -> title (--sp-label) -> text (--sp-text) -> actions (--sp-actions) -> meta (--sp-meta).
+     Sections: --sp-section top/bottom, heading block -> content: --sp-head. */
+  :root{
+    --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px;
+    --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+    --sp-label:clamp(16px,1.4vw,24px);
+    --sp-text:24px;
+    --sp-actions:clamp(32px,3.2vw,48px);
+    --sp-meta:var(--s-5);
+    --sp-head:clamp(48px,7vw,96px);
+    --sp-section:clamp(80px,10vw,144px);
+    --sp-grid:clamp(16px,2vw,24px);
+    --sp-cols:clamp(32px,5vw,80px);
+  }
+  .section-pad{padding:var(--sp-section) 0;}
+  @media (max-width:820px){ .section-pad{padding:var(--sp-section) 0;} }
+
+  /* shared text stack */
+  .section-title{margin-top:var(--sp-label);}
+  .system-head p, .finder-copy p, .problem-lead{margin-top:var(--sp-text);}
+
+  /* hero */
+  .hero-eyebrow{margin-bottom:var(--sp-label);}
+  .hero-sub{margin-top:var(--sp-text);}
+  .hero-cta-row{margin-top:var(--sp-actions); gap:var(--s-3);}
+  .hero-trust{margin-top:var(--sp-meta);}
+  .hero-states{margin-top:var(--s-8);}
+  .hero-state-tab{padding:var(--s-5) var(--s-5) 0;}
+  .hero-state-tab .num{margin-bottom:var(--s-2);}
+  .hero-inner{padding-bottom:var(--s-8);}
+
+  /* facts */
+  .fact{padding:clamp(32px,4vw,48px) var(--sp-grid); gap:var(--s-4);}
+
+  /* situation */
+  #problem .problem-head{margin-bottom:var(--sp-head);}
+  .problem-grid{gap:var(--sp-grid);}
+  .problem-card .tag{left:var(--s-5); right:var(--s-5); bottom:var(--s-5);}
+  .problem-card .tag .atmo-idx{margin-bottom:var(--s-3);}
+  .problem-card .tag .note{margin-top:var(--s-2);}
+
+  /* system: price and action sit together, not at opposite edges */
+  .sys-tabs{margin:var(--sp-head) 0 var(--s-5); gap:var(--sp-grid);}
+  .sys-tab{gap:var(--s-2);}
+  .system-stage{gap:var(--sp-cols);}
+  .system-copy .product-name{margin-top:var(--sp-label);}
+  .system-copy .product-tag{margin-top:var(--sp-text);}
+  .sys-buy{justify-content:flex-start; align-items:flex-end; gap:var(--s-7); margin-top:var(--sp-actions);}
+  .system-copy .price-label{margin-bottom:var(--s-2);}
+  @media (max-width:640px){
+    .sys-tabs{gap:var(--s-3);}
+    .sys-buy{gap:var(--s-5);}
+  }
+
+  /* ================= TYPE: Geist =================
+     The Apple voice: normal width, semibold headlines, tight tracking, calm body.
+     Geist has no width axis, so the old font-stretch values simply do nothing. */
+  body{font-family:var(--font-display);}
+  h1,h2,h3,h4,.section-title{font-weight:600; letter-spacing:-0.035em; line-height:1.02;}
+  .hero h1{font-weight:600; letter-spacing:-0.045em; line-height:.98;}
+  h3,.day-title,.spec-name,.system-copy .product-name{font-weight:500; letter-spacing:-0.025em;}
+  .fact-num,.sys-tab-name,.spec-v,.spec-price{font-weight:500; letter-spacing:-0.03em;}
+  .af-word{font-weight:600; letter-spacing:-0.045em;}
+  .hero-sub,.day-lead,.fc-sub,.problem-lead,.af-lead,.specs-lead,.system-head p{font-weight:400;}
+  .spec-v.spec-text{font-weight:400; letter-spacing:0;}
+  .logo,.footer-logo{font-weight:500;}
+
+  /* ================= THREE LINES: the mark as a graphic system =================
+     Chapter markers (.eyebrow::before), page progress in the nav, the footer.
+     Same geometry everywhere: three hairlines, 3-4px apart. (Seams between chapters removed 2026-09-27.) */
+
+  .nav-progress{display:grid; gap:3px; width:28px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
+  .nav-progress i{position:relative; display:block; height:1px; background:rgba(242,243,244,.18); overflow:hidden;}
+  .nav-progress i::after{content:""; position:absolute; inset:0; background:var(--ink); transform:scaleX(var(--p,0)); transform-origin:left center;}
+
+  /* ================= FOOTER v2 ================= */
+  footer.ft{
+    --lc:226,208,182; --ink:#F2F3F4; --ink-soft:rgba(242,243,244,.62); --ink-faint:rgba(242,243,244,.40); --line:rgba(242,243,244,.10);
+    background:#070809; color:var(--ink); padding:clamp(88px,11vw,160px) 0 0; border-top:0; overflow:hidden; position:relative;
+  }
+  footer.ft[data-mode="focus"]{--lc:214,226,240;}
+  footer.ft[data-mode="motion"]{--lc:255,241,220;}
+  /* one soft light from above, in the colour of the current air */
+  footer.ft::before{content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 50% 40% at 78% 0%, rgba(var(--lc),.09), rgba(var(--lc),0) 70%);}
+  .ft-wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--edge); position:relative;}
+  .ft-top{display:block;}
+  /* the promise as three numbers on one three-column grid, one hairline above them */
+  .ft-facts{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-grid);
+    margin-top:clamp(56px,7vw,96px); padding-top:var(--s-6); border-top:1px solid var(--line);}
+  .ft-fact-v{font-size:var(--t-num-m); font-weight:600; letter-spacing:-0.05em; line-height:.9; color:var(--ink);}
+  .ft-fact-v span{margin-left:.12em; font-size:.3em; font-weight:500; letter-spacing:-0.01em; color:rgb(var(--lc)); transition:color .8s ease;}
+  .ft-fact-k{margin-top:var(--s-4); font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);}
+  .ft-fact p{margin:var(--s-2) 0 0; max-width:30ch; font-size:15px; line-height:1.5; color:var(--ink-soft);}
+  @media (max-width:820px){ .ft-facts{grid-template-columns:1fr; row-gap:var(--s-7);} }
+  .footer-manifesto .eyebrow{color:var(--ink-faint);}
+  .footer-manifesto .section-title{margin:var(--sp-label) 0 0; max-width:none; color:var(--ink);}
+
+  .ft-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.4fr); gap:var(--sp-grid);
+    margin-top:clamp(72px,9vw,128px); padding-top:var(--s-6);}
+  .ft-grid::before, .ft-bottom::before{content:""; position:absolute; top:0; left:var(--edge); right:var(--edge); height:1px; background:var(--line);}
+  .ft .footer-col h3{font-family:var(--font-mono); font-weight:400; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 var(--s-4);}
+  .ft .footer-col a{display:block; width:fit-content; font-size:15px; color:var(--ink-soft); margin-bottom:10px; transition:color .3s ease;}
+  .ft .footer-col a:hover{color:var(--ink);}
+  .ft-form{display:flex; align-items:center; border-bottom:1px solid rgba(242,243,244,.28); transition:border-color .3s ease;}
+  .ft-form:focus-within{border-bottom-color:var(--ink);}
+  .ft .ft-form input{flex:1; width:auto; min-width:0; background:none; border:0; border-radius:0; margin:0; padding:10px 0; font:inherit; font-size:15px; color:var(--ink); outline:none;}
+  .ft-form input::placeholder{color:var(--ink-faint);}
+  .ft .ft-form button{background:none; border:0; padding:8px 0 8px 12px; color:var(--ink);}
+  .ft-form button svg{width:18px; height:18px; display:block; transition:transform .3s ease;}
+  .ft-form button:hover svg{transform:translateX(4px);}
+  .ft .footer-tag{margin:var(--s-3) 0 0; max-width:none; font-size:13px; color:var(--ink-faint);}
+
+  /* the giant word: a light passes through it */
+  .ft-word{display:flex; justify-content:space-between; margin-top:clamp(64px,8vw,120px); padding:0 calc(var(--edge) * .5);
+    font-size:24vw; font-weight:300; letter-spacing:-0.04em; line-height:.74; user-select:none; white-space:nowrap;}
+  .ft-word span{display:inline-block; text-align:center; color:rgba(242,243,244,.10);}
+
+  .ft-bottom{display:flex; justify-content:space-between; align-items:center; gap:var(--s-5); flex-wrap:wrap;
+    padding-top:var(--s-5); padding-bottom:var(--s-5); margin-top:clamp(12px,1.6vw,24px);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);}
+  .ft .footer-legal{display:flex; gap:var(--s-5);}
+  .ft .footer-legal a, .ft-top-link{color:var(--ink-faint); transition:color .3s ease;}
+  .ft .footer-legal a:hover, .ft-top-link:hover{color:var(--ink);}
+  .ft-top-link{display:inline-flex; align-items:center; gap:8px;}
+  .ft-top-link svg{width:14px; height:14px;}
+
+  @media (max-width:900px){
+    .ft-top{grid-template-columns:1fr; row-gap:var(--s-8);}
+    .ft-grid{grid-template-columns:1fr 1fr; row-gap:var(--s-7);}
+    .footer-newsletter{grid-column:1 / -1;}
+  }
+  @media (max-width:520px){
+    .ft-bottom{flex-direction:column; align-items:flex-start;}
+  }
+
+  /* ================= HERO: one hero passes through three kinds of air =================
+     JS (initHero) turns scroll progress into custom properties:
+     products get --x --y --r --s --o --b, stats get --so --sy, the title --to --tb,
+     the pin gets --lc (colour of the air) and --ax (where the air glows). */
+  .facts{display:none;}   /* the numbers live inside the hero journey now */
+  .hx{position:relative; height:440vh; background:#0A0B0D; color:#F2F3F4;
+    --ink:#F2F3F4; --ink-soft:rgba(242,243,244,.66); --ink-faint:rgba(242,243,244,.42);}
+  .hx-pin{position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; --lc:214,226,240; --ax:50%;}
+
+  .hx-air{position:absolute; inset:0; opacity:0; transition:opacity 2.2s ease .1s;
+    background:radial-gradient(ellipse 44% 56% at var(--ax) 50%, rgba(var(--lc),.17), rgba(var(--lc),.05) 46%, rgba(var(--lc),0) 74%);}
+  .hx.is-on .hx-air{opacity:1;}
+  .hx-dust{position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}
+
+  /* the headline sits behind the product and goes out of focus as the journey starts.
+     Type signature: a quiet first sentence, then a giant line split around the product. */
+  .hx-head{position:absolute; left:var(--edge); right:var(--edge); top:clamp(84px,12vh,128px); pointer-events:none;
+    opacity:var(--to,1); filter:blur(var(--tb,0px));}
+  .hx-title{margin:0; font-weight:600; color:var(--ink);}
+  .hx-t{display:block; overflow:hidden; padding-bottom:.14em; margin-bottom:-.14em;}
+  .hx-t > span{display:block; transform:translateY(112%); transition:transform 1.3s cubic-bezier(.19,1,.22,1);}
+  .hx.is-on .hx-t > span{transform:none;}
+  /* sizes follow the width AND the height: on wide, short screens a vw-only title outgrows the
+     products (they scale with vh) and the side models end up crossing the letters */
+  .hx-t-small{font-size:clamp(26px,min(4.4vw,7.6vh),80px); letter-spacing:-0.04em; line-height:1; color:var(--ink-faint);}
+  .hx-t-small > span{transition-delay:.15s;}
+  .hx-t-big{display:flex; justify-content:space-between; align-items:baseline; margin-top:.02em;
+    font-size:clamp(84px,min(18.6vw,30vh),350px); letter-spacing:-0.065em; line-height:.86;}
+  .hx-t-a > span{transition-delay:.3s;} .hx-t-b > span{transition-delay:.45s;}
+  /* the reveal mask clips at the advance width; negative tracking pulls that inside the last
+     letter, so give the mask room or the "e" of One and the "t" of quiet lose their edge */
+  .hx-t-a, .hx-t-b{padding-right:.1em; margin-right:-.1em;}
+  .hx-tag{display:flex; justify-content:space-between; margin:clamp(10px,1.4vw,24px) 0 0; font-size:clamp(15px,1.25vw,19px); line-height:1.3; color:var(--ink-soft);
+    opacity:0; transition:opacity 1.2s ease 1.2s;}
+  .hx.is-on .hx-tag{opacity:1;}
+
+  .hx-stage{position:absolute; inset:0; opacity:0; transform:scale(.94); transition:opacity 1.8s ease .35s, transform 2.2s cubic-bezier(.19,1,.22,1) .35s;}
+  .hx.is-on .hx-stage{opacity:1; transform:translate(var(--mx,0px), var(--my,0px));}
+  .hx-prod{position:absolute; left:50%; top:56%; width:min(46vw,80vh); aspect-ratio:1; margin:0;
+    --x:0vw; --y:0vh; --r:0deg; --s:1; --o:0; --b:0px;
+    transform:translate(-50%,-50%) translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s));
+    opacity:var(--o); filter:blur(var(--b)); will-change:transform, opacity, filter;}
+  /* weightless: a slow breath that never stops, on top of the scroll path */
+  .hx-float{position:relative; width:100%; height:100%; animation:hxFloat 9s ease-in-out infinite;}
+  /* soft contact shadow as a cheap gradient: a filter drop-shadow on a 1600px image was
+     re-rasterised every scroll frame (the product scales and blurs) and made the hero stutter */
+  .hx-float::after{content:""; position:absolute; left:16%; right:16%; bottom:2%; height:14%; z-index:-1; pointer-events:none;
+    background:radial-gradient(closest-side, rgba(0,0,0,.5), rgba(0,0,0,0));}
+  .hx-prod[data-mode="flow"] .hx-float{animation-duration:10.5s; animation-delay:-3s;}
+  .hx-prod[data-mode="motion"] .hx-float{animation-duration:7.5s; animation-delay:-5s;}
+  @keyframes hxFloat{
+    0%,100%{transform:translateY(-1.8%) rotate(-1.4deg);}
+    50%{transform:translateY(1.8%) rotate(1.4deg);}
+  }
+  .hx-prod img{width:100%; height:100%; object-fit:contain;}
+  /* stand-ins with baked backgrounds: fade the edges into the dark */
+  .hx-prod.is-placeholder img{object-fit:cover; filter:none;
+    -webkit-mask-image:radial-gradient(closest-side, #000 40%, transparent 96%); mask-image:radial-gradient(closest-side, #000 40%, transparent 96%);}
+
+  /* one giant number per air */
+  .hx-stats{position:absolute; inset:0; pointer-events:none;}
+  .hx-stat{position:absolute; top:52%; max-width:38%; opacity:var(--so,0); transform:translateY(calc(-50% + var(--sy,28px)));}
+  .hx-stat[data-mode="focus"]{--lc:214,226,240;} .hx-stat[data-mode="flow"]{--lc:226,208,182;} .hx-stat[data-mode="motion"]{--lc:255,241,220;}
+  .hx-stat-l{left:var(--edge);} .hx-stat-r{right:var(--edge); text-align:right;}
+  .hx-stat-k{font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgb(var(--lc));}
+  .hx-stat-v{margin-top:var(--s-3); font-size:clamp(96px,15vw,248px); font-weight:600; letter-spacing:-0.06em; line-height:.84; color:var(--ink); white-space:nowrap;}
+  .hx-stat-v span{margin-left:.06em; font-size:.26em; font-weight:500; letter-spacing:-0.02em; color:rgb(var(--lc));}
+  .hx-stat-t{margin:var(--s-5) 0 0; font-size:clamp(17px,1.5vw,21px); line-height:1.4; color:var(--ink-soft); max-width:22ch;}
+  .hx-stat-r .hx-stat-t{margin-left:auto;}
+
+  /* the bottom bar sits on the same edge as the headline and the nav, not on the 1280 grid */
+  .hx-copy{position:absolute; left:0; right:0; bottom:0; z-index:2; display:flex; justify-content:space-between; align-items:flex-end;
+    gap:var(--sp-cols); padding-bottom:clamp(28px,5vh,56px); max-width:none;}
+  .hx-eyebrow{font-family:var(--font-mono); font-size:11px; letter-spacing:.28em; color:var(--ink-faint);}
+  .hx-caption{margin-top:var(--s-3); font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);}
+  /* where we are on the journey */
+  .hx-caption{display:flex; align-items:center; gap:10px; color:var(--ink-faint);}
+  .hx-caption span{transition:color .5s ease;}
+  .hx-caption span.is-on{color:var(--ink);}
+  .hx-caption i{width:18px; height:1px; background:currentColor; opacity:.6;}
+  .hx-buy{display:flex; align-items:center; gap:var(--s-5);}
+  .hx-price{font-size:17px; font-weight:500; letter-spacing:-0.01em;}
+  .hx-buy .btn{background:var(--btn); color:var(--on-btn); border-color:transparent;}
+  .hx-buy .btn svg{transition:transform .3s ease;} .hx-buy .btn:hover svg{transform:translateX(4px);}
+  .hx-left, .hx-buy{opacity:0; transform:translateY(12px); transition:opacity 1s ease 1.1s, transform 1.2s cubic-bezier(.19,1,.22,1) 1.1s;}
+  .hx.is-on .hx-left, .hx.is-on .hx-buy{opacity:1; transform:none;}
+
+  .hx-hint{position:absolute; left:50%; bottom:clamp(20px,3vh,32px); transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); transition:opacity .6s ease;}
+  .hx-hint i{width:1px; height:32px; background:linear-gradient(currentColor, transparent); transform-origin:top; animation:hxHint 2.4s cubic-bezier(.6,0,.2,1) infinite;}
+  @keyframes hxHint{0%{transform:scaleY(0);} 50%{transform:scaleY(1);} 100%{transform:scaleY(1); opacity:0;}}
+  .hx.is-scrolled .hx-hint{opacity:0;}
+
+  @media (max-width:820px){
+    /* phone: "One" above the product, "quiet." below it, stepped to the right */
+    .hx-head{top:84px; bottom:clamp(150px,22vh,200px); display:flex; flex-direction:column;}
+    .hx-title{flex:1; display:flex; flex-direction:column;}
+    .hx-t-small{font-size:7.4vw;}
+    .hx-t-big{flex:1; flex-direction:column; justify-content:space-between; align-items:stretch; font-size:29vw;}
+    .hx-t-b{text-align:right;}
+    .hx-tag{display:none;}
+    .hx-prod{top:42%; width:min(88vw,58vh);}
+    .hx-stat{top:auto; bottom:clamp(150px,22vh,200px); max-width:none; transform:translateY(var(--sy,28px));}
+    .hx-stat-l, .hx-stat-r{left:var(--edge); right:var(--edge); text-align:left;}
+    .hx-stat-r .hx-stat-t{margin-left:0;}
+    .hx-stat-v{font-size:26vw; margin-top:var(--s-2);}
+    .hx-stat-t{margin-top:var(--s-3); font-size:16px; max-width:none;}
+    /* phone: the steps and the button don't fit on one line, so they stack (button full width) */
+    .hx-copy{flex-direction:column; align-items:stretch; gap:var(--s-4);}
+    .hx-buy .btn{flex:1; justify-content:space-between;}
+    .hx-eyebrow{display:none;} .hx-caption{margin-top:0;}
+    .hx-price{display:none;}
+    .hx-hint{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hx{height:100vh; height:100svh;}
+    .hx-float{animation:none;}
+  }
+
+  /* chapter markers removed 2026-10-03: eyebrows are text only */
+  .eyebrow::before{display:none !important;}
+  .eyebrow{gap:0;}
+
+  /* ================= CHOREOGRAPHY =================
+     Headlines rise line by line from under a mask (Apple). Images open with clip-path. */
+  /* TYPE SIGNATURE for every two-line headline: the first sentence is quiet (grey), the second
+     carries the weight and steps to the right. Same idea as the hero, at section scale. */
+  .section-title{max-width:24ch;}
+  .section-title .ln:first-child:not(:last-child) .ln-i{opacity:.36;}
+  .section-title .ln + .ln{padding-left:1.1em;}
+  .section-title.t-rev .ln:first-child .ln-i{opacity:1;}
+  .section-title.t-rev .ln + .ln .ln-i{opacity:.36;}
+  .final-cta .section-title .ln + .ln{padding-left:0;}
+  @media (max-width:640px){ .section-title .ln + .ln{padding-left:.6em;} }
+
+  .ln{display:block; overflow:hidden; padding-bottom:.12em; margin-bottom:-.12em;}
+  .ln-i{display:block; transform:translateY(108%); transition:transform 1.15s cubic-bezier(.19,1,.22,1);}
+  .lines-in .ln-i{transform:none;}
+  .clip-reveal{clip-path:inset(16% 10% 16% 10%); transition:clip-path 1.5s cubic-bezier(.19,1,.22,1);}
+  .clip-reveal.in{clip-path:inset(0 0 0 0);}
+  .clip-reveal.done{clip-path:none;}
+  @media (prefers-reduced-motion: reduce){
+    .ln-i{transform:none;} .clip-reveal{clip-path:none;}
+  }
+
+  /* no sideways scroll on a phone: the spec sheet's plate images are wider than the screen.
+     clip (not hidden) so the pinned chapters keep their sticky behaviour */
+  html, body{overflow-x:clip;}
+  .specs{overflow-x:clip;}
+
+  /* touch: every tap target on a phone gets ~44px of height without changing how it looks */
+  @media (max-width:820px){
+    .burger{min-width:44px; min-height:44px; align-items:center; justify-content:center;}
+    .sys-tab{min-height:44px;}
+    .tlink{padding-top:12px;}
+    .ft .footer-col a{padding:8px 0; margin-bottom:2px;}
+    .ft .footer-legal a, .ft-top-link{padding:12px 0;}
+  }
+
+  /* ================= BUTTON HIERARCHY (2026-10-03) =================
+     Filled button = a decision (Find your mode, Meet your mode, Reserve). Everything that only
+     moves you along the page is a text link: mono caps, a hairline, the arrow does the moving. */
+  .tlink{display:inline-flex; align-items:center; gap:14px; padding:0 0 8px; border-bottom:1px solid currentColor;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink);
+    transition:opacity .3s ease;}
+  .tlink svg{width:16px; height:16px; transition:transform .35s cubic-bezier(.2,.7,.2,1);}
+  .tlink:hover svg{transform:translateX(4px);}
+  .tlink:hover{opacity:.72;}
+  /* spec sheet: the decision sits right under the poster, the table is the fine print below it */
+  .sheet-actions{flex-direction:column; justify-content:center; gap:var(--s-4); margin-top:var(--s-8);}
+  .sheet-table-wrap{margin-top:var(--s-9, 96px);}
+  @media (max-width:640px){ .sheet-table-wrap{margin-top:var(--s-8);} }
+
+  /* ================= TYPE CONSISTENCY =================
+     Display numbers 600 everywhere (hero stats, spec callouts); leads 400. */
+  .co-v b{font-weight:600;}
+  .final-cta .fc-sub{font-weight:400;}
+
+  /* ================= FINAL CTA: the engraving is the interface =================
+     The macro (images/cta-macro.webp, 2000x1116) sits on a "stage" with the photo's own aspect, so
+     the three light-buttons can be placed in % exactly on the three engraved grooves and every
+     transform moves photo and buttons together. JS sets --open (small frame -> full screen, the
+     stage drifts right), --sheen (light over the metal), --dim (the left side darkens for the type).
+     Grooves measured on the photo: 22.25deg, centres 53.5/44.4, 50.8/50.2, 47.9/56.3 (% of W/H),
+     length 15% of W, cut about 1.2% of W. */
+  .final-cta{height:200vh; position:relative; padding:0; background:#0A0B0D; --lc:226,208,182;}
+  .fc-pin{position:sticky; top:0; height:100vh; height:100svh; overflow:hidden;
+    --open:0; --sheen:0; --dim:0; --ix:37%; --iy:29%;
+    --sw:max(100vw,179.2vh); --s0:.86; --s1:1.32; --ex:14vw; --ey:0vh;}
+
+  .fc-media{position:absolute; inset:0; overflow:hidden; background:#151619; pointer-events:none;
+    clip-path:inset(calc(var(--iy) * (1 - var(--open))) calc(var(--ix) * (1 - var(--open))));}
+  .fc-stage{position:absolute; left:50%; top:50%; width:var(--sw); aspect-ratio:2000 / 1116;
+    transform-origin:50.78% 50.18%;
+    transform:translate(-50.78%, -50.18%) translate(calc(var(--open) * var(--ex)), calc(var(--open) * var(--ey)))
+      scale(calc(var(--s0) + (var(--s1) - var(--s0)) * var(--open)));}
+  .fc-photo{position:absolute; inset:0; width:100%; height:100%; max-width:none; display:block;}
+
+  /* a light-button on each groove: invisible hit area, the light pours into the cut */
+  .fc-groove{position:absolute; left:var(--gx); top:var(--gy); width:15.4%; height:4.6%; margin:0; padding:0; border:0; background:none;
+    transform:translate(-50%,-50%) rotate(22.25deg); pointer-events:none;}
+  .final-cta.is-in .fc-groove{pointer-events:auto;}
+  .fc-groove:nth-child(2){--gx:53.53%; --gy:44.4%;}
+  .fc-groove:nth-child(3){--gx:50.78%; --gy:50.18%;}
+  .fc-groove:nth-child(4){--gx:47.9%; --gy:56.27%;}
+  .fc-groove[data-mode="focus"]{--g:214,226,240;} .fc-groove[data-mode="flow"]{--g:226,208,182;} .fc-groove[data-mode="motion"]{--g:255,241,220;}
+  .g-light{position:absolute; left:3.5%; right:3.5%; top:38%; bottom:38%; border-radius:999px; mix-blend-mode:screen;
+    background:linear-gradient(180deg, rgba(var(--g),.35) 0%, rgb(var(--g)) 60%, rgba(255,255,255,.95) 100%);
+    box-shadow:0 0 10px 2px rgba(var(--g),.8), 0 0 30px 8px rgba(var(--g),.32);
+    transform:scaleX(0); transform-origin:left center; opacity:0;
+    transition:transform .9s cubic-bezier(.2,.7,.2,1), opacity .5s ease;}
+  .fc-groove:hover .g-light{transform:scaleX(1); opacity:.5;}
+  .fc-groove.is-on .g-light{transform:scaleX(1); opacity:1;}
+  .final-cta:not(.is-in) .g-light{transform:scaleX(0); opacity:0;}
+  .fc-groove:focus-visible{outline:1px solid rgba(242,243,244,.7); outline-offset:4px; border-radius:999px;}
+
+  .fc-sheen{position:absolute; inset:-10% -50%; pointer-events:none; mix-blend-mode:screen;
+    background:linear-gradient(104deg, rgba(255,250,240,0) 42%, rgba(255,248,236,.16) 50%, rgba(255,250,240,0) 58%);
+    transform:translateX(calc(-55% + 110% * var(--sheen)));}
+  .fc-shade{position:absolute; inset:0; pointer-events:none; opacity:var(--dim);
+    background:linear-gradient(90deg, rgba(10,11,13,.92) 0%, rgba(10,11,13,.76) 34%, rgba(10,11,13,.2) 58%, rgba(10,11,13,0) 74%),
+               linear-gradient(0deg, rgba(10,11,13,.5), rgba(10,11,13,0) 30%);}
+
+  /* caption under the engraving, outside the stage so it never scales */
+  .fc-gcap{position:absolute; z-index:2; left:calc(50% + var(--ex)); top:calc(50% + var(--ey) + var(--sw) * var(--s1) * .09);
+    transform:translateX(-50%); white-space:nowrap;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgba(242,243,244,.78);
+    opacity:0; transition:opacity .8s ease .2s; pointer-events:none;}
+  .fc-gcap #fcCapNo{color:rgb(var(--lc));}
+  .final-cta.is-in .fc-gcap{opacity:1;}
+  .fc-cap{position:absolute; left:50%; top:calc(100% - var(--iy) + 18px); transform:translateX(-50%); white-space:nowrap; z-index:2;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+    opacity:calc(1 - var(--open) * 4);}
+
+  /* the left column: on the hero grid edge, the type signature, the pair, Reserve */
+  .fc-copy{position:absolute; z-index:3; left:var(--edge); top:50%; width:min(40vw,560px); transform:translateY(-50%);
+    opacity:0; pointer-events:none; transition:opacity .9s ease, transform 1.1s cubic-bezier(.19,1,.22,1);}
+  .final-cta.is-in .fc-copy{opacity:1; pointer-events:auto;}
+  .fc-copy .eyebrow{color:var(--ink-faint);}
+  .fc-copy .section-title{margin:var(--sp-label) 0 0; text-align:left; color:var(--ink);}
+  .final-cta .fc-copy .section-title .ln + .ln{padding-left:1.1em;}
+  .final-cta .fc-copy .fc-sub{margin:var(--sp-text) 0 0; max-width:34ch; text-align:left; color:var(--ink-soft); font-weight:400;}
+  .fc-pick{margin-top:var(--s-7); padding-top:var(--s-4); border-top:1px solid rgba(242,243,244,.14);}
+  .fc-pick-k{font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);}
+  .fc-pick-v{display:flex; align-items:baseline; gap:var(--s-4); margin-top:var(--s-2);
+    font-size:clamp(28px,2.6vw,40px); font-weight:500; letter-spacing:-0.03em; color:var(--ink);}
+  .fc-pick-p{font-size:.5em; font-weight:400; letter-spacing:0; color:rgb(var(--lc)); transition:color .6s ease;}
+  .final-cta .fc-actions{justify-content:flex-start; margin-top:var(--s-6);}
+
+  @media (max-width:820px){
+    /* phone: the engraving sits in the upper half, the type below it */
+    .fc-pin{--ix:12%; --iy:30%; --ex:0vw; --ey:-22vh; --s0:.9; --s1:1;}
+    /* the photo is wide; on a tall screen its lower edge shows, so it fades into the dark instead */
+    .fc-photo{-webkit-mask-image:linear-gradient(180deg,#000 66%,transparent 96%); mask-image:linear-gradient(180deg,#000 66%,transparent 96%);}
+    .fc-shade{background:linear-gradient(0deg, rgba(10,11,13,.94) 0%, rgba(10,11,13,.8) 46%, rgba(10,11,13,.1) 66%, rgba(10,11,13,0) 80%);}
+    .fc-copy{top:auto; bottom:clamp(24px,5vh,48px); left:var(--edge); right:var(--edge); width:auto; transform:none;}
+    .final-cta .fc-copy .section-title .ln + .ln{padding-left:.6em;}
+    .fc-pick{margin-top:var(--s-5);}
+    .final-cta .fc-actions .btn{width:100%; justify-content:space-between;}
+  }
+  /* tablets / small laptops: the engraving moves further right and a touch smaller, so the type never touches it */
+  @media (min-width:821px) and (max-width:1180px){ .fc-pin{--ex:20vw; --s1:1.2;} }
+  /* short phones: drop the sentence so the type never runs into the engraving */
+  @media (max-width:820px) and (max-height:720px){ .final-cta .fc-copy .fc-sub{display:none;} .fc-pin{--ey:-26vh;} }
+  @media (prefers-reduced-motion: reduce){ .final-cta{height:100vh;} .fc-pin{position:relative;} }
+
+  /* ================= CURSOR: three lines =================
+     The cursor is the mark: three short vertical lines (the engraving on every pair). Still mouse =
+     quiet, the lines are level. Moving = noise, they swing like a level meter and settle the moment
+     you stop: noise cancelling in your hand. Over anything you can press the three close into one
+     line ("one is yours"). Difference blend, so it reads on bone paper and on graphite. In the
+     Finder the field's own light is the cursor, so ours steps aside. Mouse only. */
+  @media (pointer:fine){
+    html.has-cur, html.has-cur *{cursor:none !important;}
+    html.has-cur input, html.has-cur textarea{cursor:text !important;}
+    html.has-cur .af-field{cursor:crosshair !important;}
+    html.has-cur .af-dot{cursor:grab !important;}
+    html.has-cur .af.is-dragging .af-field, html.has-cur .af.is-dragging .af-dot{cursor:grabbing !important;}
+  }
+  .cur{position:fixed; left:0; top:0; z-index:10000; pointer-events:none; mix-blend-mode:difference; transition:opacity .3s ease;}
+  .cur i{position:absolute; left:-1px; top:-12px; width:2px; height:24px; border-radius:1px; background:#F2F3F4;
+    transform-origin:50% 50%; will-change:transform;}
+  html.cur-off .cur{opacity:0;}
+
+  /* button hovers: keep each button's own colour (the old global hover turned every button white,
+     which wiped out the dark Reserve on the spec sheet); the arrow moves, the fill deepens a touch */
+  .btn:hover{background:var(--accent); color:var(--on-accent);}
+  .hx-buy .btn:hover, .fc-actions .btn:hover, .info-modal-card .btn:hover{background:#FFFFFF; color:var(--on-btn);}
+  .sheet-actions .btn:hover{background:#000000; color:#FFFFFF;}
+  header.nav .nav-right > .btn:hover{background:rgba(255,255,255,0.06); color:var(--ink);}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="siteNav">
+  <a class="logo" href="#top">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.45 7.69L18.14 10.8M8.16 10.45L15.84 13.56M5.86 13.2L13.55 16.32" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    AETHER
+  </a>
+  <span class="nav-progress" id="navProgress" aria-hidden="true"><i></i><i></i><i></i></span>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#problem">The day</a>
+      <a href="#system">Modes</a>
+      <a href="#specs">Compare</a>
+    </div>
+    <a href="#finder" class="btn">Find your mode</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-top">
+      <a class="logo" href="#top">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.45 7.69L18.14 10.8M8.16 10.45L15.84 13.56M5.86 13.2L13.55 16.32" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        AETHER
+      </a>
+      <button class="mm-close" id="mmClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="mm-links">
+      <a href="#problem">The day</a>
+      <a href="#system">Modes</a>
+      <a href="#specs">Compare</a>
+    </nav>
+    <a href="#finder" class="btn" style="width:100%; justify-content:center; margin-top:8px;">Find your mode</a>
+  </div>
+</div>
+
+<!-- ============ HERO: one hero passes through three kinds of air ============
+     (after "Deferred Damage": one object stays on screen and travels; the world changes around it.)
+     A pinned scene. The product floats in the dark in front of a giant headline. Scrolling carries
+     it through three airs: cold, champagne, daylight. At each change it turns into the next model
+     (One -> Flow -> Move) and one giant number appears beside it. At the end all three gather.
+     The old Facts row lives inside this scene now. Images: images/prod-*.webp (cut-outs);
+     until they exist the old system-*.webp stand in (.is-placeholder masks their backgrounds). -->
+<section class="hx" id="top" aria-label="AETHER: three modes, one quiet">
+  <div class="hx-pin" id="hxPin">
+    <div class="hx-air" aria-hidden="true"></div>
+    <canvas class="hx-dust" id="hxDust" aria-hidden="true"></canvas>
+
+    <!-- type signature: a quiet first sentence, then a giant line split around the product
+         ("One [product] quiet."), and one small sentence read across the product. -->
+    <div class="hx-head">
+      <h1 class="hx-title">
+        <span class="hx-t hx-t-small"><span>Three modes.</span></span>
+        <span class="hx-t-big"><span class="hx-t hx-t-a"><span>One</span></span> <span class="hx-t hx-t-b"><span>quiet</span></span></span>
+      </h1>
+      <p class="hx-tag"><span>Sound, tuned</span><span>to the air you&rsquo;re in.</span></p>
+    </div>
+
+    <div class="hx-stage" id="hxStage" aria-hidden="true">
+      <figure class="hx-prod" data-mode="focus"><div class="hx-float"><img src="images/prod-one-1600.webp" alt="" width="1600" height="1600" fetchpriority="high"></div></figure>
+      <figure class="hx-prod" data-mode="flow"><div class="hx-float"><img src="images/prod-flow-1600.webp" alt="" width="1600" height="1600"></div></figure>
+      <figure class="hx-prod" data-mode="motion"><div class="hx-float"><img src="images/prod-move-1600.webp" alt="" width="1600" height="1600"></div></figure>
+    </div>
+
+    <div class="hx-stats">
+      <div class="hx-stat hx-stat-l" data-mode="focus">
+        <div class="hx-stat-k">01 Focus &middot; Aether One</div>
+        <div class="hx-stat-v">&minus;38<span>dB</span></div>
+        <p class="hx-stat-t">An open office becomes a closed door.</p>
+      </div>
+      <div class="hx-stat hx-stat-r" data-mode="flow">
+        <div class="hx-stat-k">02 Flow &middot; Aether Flow</div>
+        <div class="hx-stat-v">30<span>h</span></div>
+        <p class="hx-stat-t">Calls all day. Music all evening.</p>
+      </div>
+      <div class="hx-stat hx-stat-l" data-mode="motion">
+        <div class="hx-stat-k">03 Motion &middot; Aether Move</div>
+        <div class="hx-stat-v">5<span>g</span></div>
+        <p class="hx-stat-t">Light enough to forget. Steady enough to run.</p>
+      </div>
+    </div>
+
+    <div class="wrap hx-copy">
+      <div class="hx-left">
+        <div class="hx-eyebrow">AETHER</div>
+        <div class="hx-caption" id="hxSteps" aria-hidden="true"><span data-step="focus" class="is-on">Focus</span><i></i><span data-step="flow">Flow</span><i></i><span data-step="motion">Motion</span></div>
+      </div>
+      <div class="hx-buy">
+        <span class="hx-price">From &euro;179</span>
+        <a href="#finder" class="btn">Find your mode
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hx-hint" aria-hidden="true"><span>Scroll</span><i></i></div>
+  </div>
+</section>
+
+<!-- ============ FACTS (static, replaces ticker) ============ -->
+<section class="facts" aria-label="Key specifications">
+  <dl class="facts-grid wrap">
+    <div class="fact"><dt class="fact-label">Peak noise cancelling</dt><dd class="fact-num"><b class="count" data-to="-38">−38</b><span>dB</span></dd></div>
+    <div class="fact"><dt class="fact-label">Max battery</dt><dd class="fact-num"><b class="count" data-to="60">60</b><span>h</span></dd></div>
+    <div class="fact"><dt class="fact-label">Focus · Flow · Motion</dt><dd class="fact-num"><b class="count" data-to="3">3</b><span>modes</span></dd></div>
+    <div class="fact"><dt class="fact-label">Spare parts</dt><dd class="fact-num"><b class="count" data-to="5">5</b><span>yrs</span></dd></div>
+  </dl>
+</section>
+
+<!-- ============ SITUATION: one day, three airs (full-screen) ============
+     A pinned scene. Each part of the day is a photograph on the whole screen; the text sits in
+     its empty air. First the chapter title, then the clock takes over: the time, the frame and
+     the colour of the air change together, and a dot walks along the day line.
+     --fp = focal point on wide screens, --fpm = on a phone (the sources are square / 16:9). -->
+<section class="day" id="problem" data-atmo="flow" aria-label="The situation: one day, three kinds of air">
+  <div class="day-pin">
+    <div class="day-shots" aria-hidden="true">
+      <figure class="day-shot is-on" data-atmo="flow" style="--fp:50% 72%; --fpm:51% 50%"><img src="images/situation-commute-v3.webp" alt="A woman in Aether Flow headphones crossing a foggy street on her morning commute" width="1536" height="857"></figure>
+      <figure class="day-shot" data-atmo="focus" style="--fp:50% 60%; --fpm:82% 50%"><img src="images/situation-office-v3.webp" alt="A woman in Aether One headphones working alone by foggy office windows" width="2000" height="1116" loading="lazy"></figure>
+      <figure class="day-shot" data-atmo="motion" style="--fp:50% 72%; --fpm:46% 50%"><img src="images/situation-run-v2.webp" alt="An evening run in Aether Move earbuds" width="1932" height="1932" loading="lazy"></figure>
+      <div class="day-veil"></div>
+      <div class="day-haze" id="dayHaze"></div>
+    </div>
+
+    <div class="day-ui">
+      <div class="day-top">
+        <div class="eyebrow">The situation</div>
+      </div>
+
+      <div class="day-stage" aria-live="polite">
+        <div class="day-intro is-on">
+          <h2 class="section-title">One day.<br>Three kinds of air.</h2>
+          <p class="day-lead">Your headphones stay exactly the same.</p>
+        </div>
+        <article class="day-scene" data-atmo="flow">
+          <div class="day-time">08:40</div>
+          <h3 class="day-title">The commute</h3>
+          <p class="day-note">Half your attention on the street, half on the call.</p>
+          <div class="day-meta">78 dB ambient &middot; needs <b>Flow</b></div>
+        </article>
+        <article class="day-scene" data-atmo="focus">
+          <div class="day-time">11:00</div>
+          <h3 class="day-title">The open office</h3>
+          <p class="day-note">Constant conversation, nowhere to disappear to.</p>
+          <div class="day-meta">64 dB ambient &middot; needs <b>Focus</b></div>
+        </article>
+        <article class="day-scene" data-atmo="motion">
+          <div class="day-time">19:30</div>
+          <h3 class="day-title">The evening run</h3>
+          <p class="day-note">Wind, sweat, and a fit that has to survive both.</p>
+          <div class="day-meta">22 km/h wind &middot; needs <b>Motion</b></div>
+        </article>
+      </div>
+
+      <div class="day-line" aria-hidden="true">
+        <div class="day-track">
+          <span class="day-fill" id="dayFill"></span>
+          <span class="day-mark" style="left:16.67%"></span>
+          <span class="day-mark" style="left:31.25%"></span>
+          <span class="day-mark" style="left:84.38%"></span>
+          <span class="day-dot" id="dayDot"><i id="dayClock">08:40</i></span>
+        </div>
+        <div class="day-ticks"><span>06</span><span>09</span><span>12</span><span>15</span><span>18</span><span>21</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SYSTEM / SOLUTION: switching a mode changes the air of the whole section ============ -->
+<section class="section-pad system" id="system" data-atmo="focus">
+  <div class="wrap">
+    <div class="system-head reveal">
+      <div class="eyebrow">One sound philosophy</div>
+      <h2 class="section-title">Not three prices.<br>Three kinds of quiet.</h2>
+      <p>Each one is tuned for a different state. The one you're in right now decides which is yours.</p>
+    </div>
+
+    <div class="sys-tabs" role="tablist" aria-label="Select a mode">
+      <button class="sys-tab active" role="tab" aria-selected="true" data-system="focus">
+        <span class="sys-tab-name">Focus</span><span class="sys-tab-note">Deep work, travel, silence</span>
+      </button>
+      <button class="sys-tab" role="tab" aria-selected="false" data-system="flow">
+        <span class="sys-tab-name">Flow</span><span class="sys-tab-note">Everyday, calls, hybrid days</span>
+      </button>
+      <button class="sys-tab" role="tab" aria-selected="false" data-system="motion">
+        <span class="sys-tab-name">Motion</span><span class="sys-tab-note">Training, commute, city</span>
+      </button>
+    </div>
+
+    <div class="system-stage reveal">
+      <div class="system-media">
+        <img class="sys-shot is-on" data-shot="focus" src="images/prod-one.webp" alt="Aether One over-ear headphones" width="3072" height="3072" loading="lazy">
+        <img class="sys-shot" data-shot="flow" src="images/prod-flow.webp" alt="Aether Flow on-ear headphones" width="3072" height="3072" loading="lazy">
+        <img class="sys-shot" data-shot="motion" src="images/prod-move.webp" alt="Aether Move wireless earbuds with case" width="3072" height="3072" loading="lazy">
+      </div>
+      <div class="system-copy">
+        <div class="sys-air" id="systemAir">Still air · Cold light</div>
+        <div class="product-name" id="systemName">Aether One</div>
+        <p class="product-tag" id="systemTag">Hybrid ANC that turns an open office into a closed door. Built for the work that needs your full attention.</p>
+        <div class="sys-buy">
+          <a href="#specs" class="tlink" id="systemCta">See Aether One
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT FINDER: "focus the air" (signature interaction) ============
+     One graphite world. Drag the light across the field: the dust and the colour of the light
+     change with the atmosphere, and the mode you're closest to comes into focus. -->
+<section class="section-pad finder af" id="finder" data-mode="flow">
+  <canvas class="af-air" id="afAir" aria-hidden="true"></canvas>
+  <div class="wrap af-grid">
+    <div class="af-copy">
+      <div class="eyebrow">Find your mode</div>
+      <h2 class="section-title">Tell us how<br>you listen</h2>
+      <p class="af-lead">No quiz. Drag the light to where your day actually sits. The mode that fits will come into focus.</p>
+    </div>
+
+    <div class="af-field" id="afField" tabindex="0" role="application"
+         aria-label="Mode field. Arrow keys move the light: left and right from still to in motion, up and down from blocking out the world to staying aware.">
+      <span class="af-axis af-axis-x" aria-hidden="true"></span>
+      <span class="af-axis af-axis-y" aria-hidden="true"></span>
+      <span class="af-corner tl" aria-hidden="true"></span><span class="af-corner tr" aria-hidden="true"></span>
+      <span class="af-corner bl" aria-hidden="true"></span><span class="af-corner br" aria-hidden="true"></span>
+      <span class="af-edge af-edge-l" aria-hidden="true">Still</span>
+      <span class="af-edge af-edge-r" aria-hidden="true">In motion</span>
+      <span class="af-edge af-edge-t" aria-hidden="true">Block out the world</span>
+      <span class="af-edge af-edge-b" aria-hidden="true">Stay aware</span>
+      <span class="af-anchor" data-anchor="focus" style="left:14%; top:16%;" aria-hidden="true"><i>01 Focus</i></span>
+      <span class="af-anchor" data-anchor="flow" style="left:36%; top:70%;" aria-hidden="true"><i>02 Flow</i></span>
+      <span class="af-anchor" data-anchor="motion" style="left:86%; top:84%;" aria-hidden="true"><i>03 Motion</i></span>
+      <span class="af-dot" id="afDot" aria-hidden="true"><span class="af-hint">Drag the light</span></span>
+      <span class="af-readout" id="afReadout" aria-hidden="true">X 0.36 · Y 0.62</span>
+    </div>
+
+    <div class="af-result" id="afResult">
+      <div class="af-result-label">Your mode <span class="af-match" id="afMatch">· 100% match</span></div>
+      <div class="af-words" aria-hidden="true">
+        <span class="af-word" data-word="focus">Focus</span>
+        <span class="af-word" data-word="flow">Flow</span>
+        <span class="af-word" data-word="motion">Motion</span>
+      </div>
+      <p class="af-desc" id="frDesc" aria-live="polite">Flow. Mostly still, staying aware. Built for the everyday mix of calls, focus, and life around you.</p>
+      <a href="#specs" class="btn" id="frCta">Meet Aether Flow
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPEC SHEET: a printed datasheet ============
+     The one light chapter of the page: bone paper, graphite ink. The large figure is the poster
+     (the product and its four numbers on leader lines); the table below is the fine print.
+     The lit mode follows the Finder; tabs, table columns or footer links swap the sheet. -->
+<section class="section-pad specs" id="specs" data-lit="flow">
+  <div class="wrap">
+    <div class="sheet-bar" aria-hidden="true">
+      <span>AETHER &mdash; Datasheet</span>
+      <span id="sheetBarMode">02 / Flow &middot; On-ear, foldable</span>
+      <span id="sheetBarNo">Sheet 2 of 3</span>
+    </div>
+
+    <div class="sheet-head reveal">
+      <h2 class="section-title">Read the<br>fine print.</h2>
+      <div class="sheet-tabs" role="tablist" aria-label="Choose a mode">
+        <button class="sheet-tab" role="tab" aria-selected="false" data-mode="focus"><span class="st-idx">01</span><span class="st-name">One</span><span class="st-price">&euro;449</span></button>
+        <button class="sheet-tab is-on" role="tab" aria-selected="true" data-mode="flow"><span class="st-idx">02</span><span class="st-name">Flow</span><span class="st-price">&euro;249</span></button>
+        <button class="sheet-tab" role="tab" aria-selected="false" data-mode="motion"><span class="st-idx">03</span><span class="st-name">Move</span><span class="st-price">&euro;179</span></button>
+      </div>
+    </div>
+
+    <div class="sheet-fig" id="sheetFig" data-mode="flow">
+      <div class="sheet-side sheet-left">
+        <div class="co co-l"><div class="co-text"><div class="co-v"><b data-k="anc">&minus;32</b><span data-k="ancU">dB</span></div><div class="co-k" data-k="ancL">Hybrid noise cancelling</div></div><i class="co-line"></i></div>
+        <div class="co co-l"><div class="co-text"><div class="co-v"><b data-k="w">220</b><span data-k="wU">g</span></div><div class="co-k" data-k="wL">Folds flat</div></div><i class="co-line"></i></div>
+      </div>
+      <figure class="sheet-plate">
+        <img class="sheet-shot" data-mode="focus" src="images/prod-one.webp" alt="Aether One" width="3072" height="3072" loading="lazy">
+        <img class="sheet-shot is-on" data-mode="flow" src="images/prod-flow.webp" alt="Aether Flow" width="3072" height="3072" loading="lazy">
+        <img class="sheet-shot" data-mode="motion" src="images/prod-move.webp" alt="Aether Move" width="3072" height="3072" loading="lazy">
+        <figcaption id="sheetCap">Fig. 02 &mdash; Aether Flow</figcaption>
+      </figure>
+      <div class="sheet-side sheet-right">
+        <div class="co co-r"><i class="co-line"></i><div class="co-text"><div class="co-v"><b data-k="bat">30</b><span data-k="batU">h</span></div><div class="co-k" data-k="batL">Battery</div></div></div>
+        <div class="co co-r"><i class="co-line"></i><div class="co-text"><div class="co-v"><b data-k="drv">40</b><span data-k="drvU">mm</span></div><div class="co-k" data-k="drvL">Dynamic driver</div></div></div>
+      </div>
+    </div>
+
+    <div class="sheet-actions">
+      <button type="button" class="btn" id="sheetReserve" data-reserve="Aether Flow"><span id="sheetReserveText">Reserve Aether Flow</span>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <span class="sheet-note">14-day home trial &middot; 2-year warranty &middot; parts for 5 years</span>
+    </div>
+
+    <div class="sheet-table-wrap">
+      <table class="sheet-table" id="sheetTable">
+        <thead>
+          <tr><th scope="col"><span class="sr-only">Spec</span></th><th scope="col" data-mode="focus">Aether One</th><th scope="col" data-mode="flow" class="is-on">Aether Flow</th><th scope="col" data-mode="motion">Aether Move</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Form</th><td data-mode="focus">Over-ear</td><td data-mode="flow" class="is-on">On-ear, foldable</td><td data-mode="motion">True wireless</td></tr>
+          <tr><th scope="row">Noise</th><td data-mode="focus">&minus;38 dB</td><td data-mode="flow" class="is-on">&minus;32 dB</td><td data-mode="motion">Aware</td></tr>
+          <tr><th scope="row">Battery</th><td data-mode="focus">40 h</td><td data-mode="flow" class="is-on">30 h</td><td data-mode="motion">8 + 32 h</td></tr>
+          <tr><th scope="row">Weight</th><td data-mode="focus">258 g</td><td data-mode="flow" class="is-on">220 g</td><td data-mode="motion">5 g per bud</td></tr>
+          <tr><th scope="row">Finish</th><td data-mode="focus"><i class="sw sw-basalt"></i>Basalt</td><td data-mode="flow" class="is-on"><i class="sw sw-trav"></i>Travertine</td><td data-mode="motion"><i class="sw sw-bone"></i>Bone</td></tr>
+          <tr><th scope="row">Built for</th><td data-mode="focus">Deep work, flights</td><td data-mode="flow" class="is-on">Calls, all-day wear</td><td data-mode="motion">Runs, the city</td></tr>
+          <tr><th scope="row">Price</th><td data-mode="focus">&euro;449</td><td data-mode="flow" class="is-on">&euro;249</td><td data-mode="motion">&euro;179</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA: the engraving is the interface ============
+     A pinned scene. A small frame in the dark holds the engraved three-line mark on graphite metal;
+     scrolling grows it to the whole screen (scale-mask) while a light passes over the metal. Then
+     the three grooves become the choice: hover pours light into a cut, a click keeps it lit and
+     "cuts it deeper". The left column names the pair and reserves it.
+     The metal and the grooves are drawn in CSS so each cut can light on its own. A clean macro of
+     the metal (no engraving; prompt in AETHER-HANDOFF.md) can go under them as --fc-photo. -->
+<section class="final-cta" id="reserve" aria-label="Reserve your pair">
+  <div class="fc-pin">
+    <div class="fc-media">
+      <div class="fc-stage" role="radiogroup" aria-label="Choose the line we cut deeper">
+        <img class="fc-photo" src="images/cta-macro.webp" alt="Macro of the three engraved lines on the earcup" width="2000" height="1116" loading="lazy">
+        <button type="button" class="fc-groove" data-mode="focus" role="radio" aria-checked="false" aria-label="Focus, Aether One"><span class="g-light"></span></button>
+        <button type="button" class="fc-groove is-on" data-mode="flow" role="radio" aria-checked="true" aria-label="Flow, Aether Flow"><span class="g-light"></span></button>
+        <button type="button" class="fc-groove" data-mode="motion" role="radio" aria-checked="false" aria-label="Motion, Aether Move"><span class="g-light"></span></button>
+      </div>
+      <span class="fc-sheen" aria-hidden="true"></span>
+      <span class="fc-shade" aria-hidden="true"></span>
+    </div>
+    <div class="fc-gcap" aria-hidden="true"><span id="fcCapNo">02</span> &mdash; <span id="fcCapText">Flow &middot; cut deeper on your pair</span></div>
+    <div class="fc-cap" aria-hidden="true">Fig. 04 &mdash; The engraving, up close</div>
+
+    <div class="fc-copy">
+      <div class="eyebrow">Engraving</div>
+      <h2 class="section-title">Three lines.<br>One is yours.</h2>
+      <p class="fc-sub">Every pair carries all three. Choose the one we cut a little deeper.</p>
+      <div class="fc-pick">
+        <div class="fc-pick-k">Your pair</div>
+        <div class="fc-pick-v"><span id="fcPickName">Aether Flow</span><span class="fc-pick-p" id="fcPickPrice">&euro;249</span></div>
+      </div>
+      <div class="fc-actions">
+        <button type="button" class="btn" id="fcReserve" data-reserve="Aether Flow"><span id="fcReserveText">Reserve Aether Flow</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============
+     The page ends in quiet: manifesto + "your air right now" (the Situation's day logic, live),
+     plain columns, a one-line subscribe, and a giant AETHER that a light passes through
+     (weight + brightness follow the pointer; on touch the light drifts on its own). -->
+<footer class="ft" id="ft" data-mode="flow">
+  <!-- the promise: three numbers that take the risk out of buying (rhymes with the hero's −38 dB / 30 h / 5 g) -->
+  <div class="ft-wrap ft-top">
+    <div class="footer-manifesto">
+      <div class="eyebrow">Our promise</div>
+      <p class="section-title t-rev">Built to be repaired,<br>not replaced.</p>
+    </div>
+    <div class="ft-facts">
+      <div class="ft-fact">
+        <div class="ft-fact-v">14<span>days</span></div>
+        <div class="ft-fact-k">Home trial</div>
+        <p>Live with your pair for two weeks. If it isn&rsquo;t yours, it goes back free.</p>
+      </div>
+      <div class="ft-fact">
+        <div class="ft-fact-v">2<span>years</span></div>
+        <div class="ft-fact-k">Warranty</div>
+        <p>Every mode, every part, from the day it arrives.</p>
+      </div>
+      <div class="ft-fact">
+        <div class="ft-fact-v">5<span>years</span></div>
+        <div class="ft-fact-k">Spare parts</div>
+        <p>Cushions, headbands and batteries swap by hand. No glue, no landfill.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ft-wrap ft-grid">
+    <div class="footer-col">
+      <h3>Products</h3>
+      <a href="#specs" data-spec-jump="focus">Aether One</a>
+      <a href="#specs" data-spec-jump="flow">Aether Flow</a>
+      <a href="#specs" data-spec-jump="motion">Aether Move</a>
+    </div>
+    <div class="footer-col">
+      <h3>Support</h3>
+      <a href="#" data-modal-title="Warranty" data-modal-msg="Every AETHER mode ships with a 2-year warranty, and spare parts stay available for 5 years after purchase. This is a concept project, so the full policy page isn't built out here — but that's the promise the site makes throughout.">Warranty</a>
+      <a href="#" data-modal-title="Repairs & parts" data-modal-msg="Modular ear cushions and tool-free swaps are part of the AETHER design brief. This concept project doesn't include a live repairs portal, but that's the intended experience.">Repairs &amp; parts</a>
+      <a href="#" data-modal-title="Shipping & returns" data-modal-msg="A 14-day home trial is part of the AETHER promise on every mode. This is a portfolio concept, so live shipping and returns flows aren't wired up behind this link.">Shipping &amp; returns</a>
+    </div>
+    <div class="footer-col">
+      <h3>Company</h3>
+      <a href="#" data-modal-title="About Aether" data-modal-msg="AETHER is a concept audio brand built for a UI/UX design portfolio — it explores product finder UX, a state-based product system, and premium editorial art direction. It isn't a real, purchasable product.">About Aether</a>
+      <a href="#" data-modal-title="Sustainability" data-modal-msg="In-brief: repairable-by-design hardware and long-life spare parts. This concept project doesn't include a full sustainability report behind this link.">Sustainability</a>
+      <a href="#" data-modal-title="Press" data-modal-msg="No press kit is attached to this concept project — but thank you for the interest. This page exists to demonstrate portfolio-quality landing page design.">Press</a>
+    </div>
+    <div class="footer-col footer-newsletter">
+      <h3>Quiet notes</h3>
+      <!-- No action/backend: this is a static concept demo. JS below shows an inline confirmation instead of submitting anywhere. Wire up a real endpoint before production use. -->
+      <form id="newsletterForm" class="ft-form">
+        <input type="email" id="newsletterEmail" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit" aria-label="Subscribe"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      </form>
+      <p class="footer-tag" id="newsletterNote">Four letters a year. On sound, not sales.</p>
+    </div>
+  </div>
+
+  <div class="ft-word" id="ftWord" aria-hidden="true"><span>A</span><span>E</span><span>T</span><span>H</span><span>E</span><span>R</span></div>
+
+  <div class="ft-wrap ft-bottom">
+    <span>&copy; 2026 AETHER. Concept brand for portfolio purposes.</span>
+    <span class="footer-legal">
+      <a href="#" data-modal-title="Privacy" data-modal-msg="This concept project doesn't collect or store personal data — the email field above isn't connected to anything. A real product would link a full privacy policy here.">Privacy</a>
+      <a href="#" data-modal-title="Terms" data-modal-msg="This is a portfolio concept, not a live storefront — nothing here is purchasable. A real product would link its terms of service here.">Terms</a>
+      <a href="#" data-modal-title="Accessibility" data-modal-msg="This concept aims for solid contrast, keyboard-reachable controls, and reduced-motion support throughout. A full accessibility statement would live here on a real site.">Accessibility</a>
+    </span>
+    <a href="#top" class="ft-top-link">Back to top <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+  </div>
+</footer>
+
+<!-- ============ INFO MODAL ============ -->
+<div class="info-modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+  <div class="info-modal-backdrop" id="infoModalBackdrop"></div>
+  <div class="info-modal-card">
+    <button class="info-modal-close" id="infoModalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="eyebrow" id="infoModalEyebrow">Concept note</div>
+    <h3 id="infoModalTitle">Title</h3>
+    <p id="infoModalMsg">Message</p>
+    <a href="#top" class="btn" id="infoModalOk">Got it</a>
+  </div>
+</div>
+
+<!-- ============ RESERVE MODAL ============ -->
+<div class="info-modal" id="reserveModal" role="dialog" aria-modal="true" aria-labelledby="reserveModalProduct">
+  <div class="info-modal-backdrop" id="reserveModalBackdrop"></div>
+  <div class="info-modal-card">
+    <button class="info-modal-close" id="reserveModalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="eyebrow">Reserve</div>
+    <h3 id="reserveModalProduct">Aether One</h3>
+    <p id="reserveModalPrice">€449 · Two-year warranty · 14-day home trial</p>
+    <!-- No action/backend: this is a static concept demo. JS below shows an inline confirmation instead of submitting anywhere. Wire up a real endpoint before production use. -->
+    <form id="reserveForm">
+      <input type="email" id="reserveEmail" class="modal-input" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+      <button type="submit" class="btn" style="width:100%; justify-content:center;">Reserve</button>
+    </form>
+    <p class="footer-tag" id="reserveNote" style="margin-top:14px;">No payment now — we'll email you when it ships. (Concept project: nothing is actually sent.)</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- nav scroll state ---- */
+  var nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ---- mobile menu ---- */
+  var burger = document.getElementById('burger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var mmClose = document.getElementById('mmClose');
+  function openMenu(){
+    mobileMenu.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', openMenu);
+  mmClose.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('.mm-links a, .btn').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  /* ---- HERO: one hero passes through three kinds of air ----
+     Scroll progress p (0..1) through the pinned hero drives everything through keyframe tracks:
+     each product has a path [p, x(vw), y(vh), rotate(deg), scale, opacity, blur(px)].
+     One -> swap -> Flow -> swap -> Move -> all three gather. Swaps happen out of focus, mid-turn.
+     The colour of the air and the dust follow whichever product is on screen. */
+  var siteNav = document.getElementById('siteNav');
+  if(siteNav) siteNav.dataset.atmo = 'focus';   /* the hero is always dark: nav stays light-on-dark */
+  (function initHero(){
+    var sec = document.getElementById('top'), pin = document.getElementById('hxPin'), stage = document.getElementById('hxStage');
+    if(!sec || !pin || !stage) return;
+    var title = sec.querySelector('.hx-head');
+    var LC = { focus:[214,226,240], flow:[226,208,182], motion:[255,241,220] };
+    var INFO = { focus:['01','Focus','Aether One'], flow:['02','Flow','Aether Flow'], motion:['03','Motion','Aether Move'] };
+    var TRACK = {
+      focus:  [[0,0,0,-6,1,1,0],[.09,0,0,-6,1,1,0],[.19,17,-1,-12,.9,1,0],[.30,17,-1,-12,.9,1,0],[.36,3,0,-28,.72,0,18],[.84,0,3,6,.5,0,18],[.95,0,-2,-5,.72,1,0],[1,0,-2,-5,.72,1,0]],
+      flow:   [[0,-3,0,26,.72,0,18],[.31,-3,0,26,.72,0,18],[.38,-17,0,9,.9,1,0],[.55,-17,0,9,.9,1,0],[.61,-3,0,-22,.72,0,18],[.84,-12,4,0,.4,0,18],[.95,-26,8,7,.56,1,0],[1,-26,8,7,.56,1,0]],
+      motion: [[0,3,0,-24,.7,0,18],[.57,3,0,-24,.7,0,18],[.64,17,0,-8,.86,1,0],[.82,17,0,-8,.86,1,0],[.95,26,9,-6,.56,1,0],[1,26,9,-6,.56,1,0]]
+    };
+    /* each number: fade in, hold, fade out */
+    var STAT = { focus:[.17,.21,.28,.31], flow:[.39,.43,.53,.56], motion:[.65,.69,.79,.83] };
+    var prods = [].map.call(stage.querySelectorAll('.hx-prod'), function(el){ return { el:el, mode:el.dataset.mode, kf:TRACK[el.dataset.mode] }; });
+    var stats = [].map.call(sec.querySelectorAll('.hx-stat'), function(el){ return { el:el, w:STAT[el.dataset.mode] }; });
+    var steps = [].slice.call(sec.querySelectorAll('#hxSteps [data-step]'));
+    var shown = '', ticking = false, forced = null;
+    var air = { focus:1, flow:0, motion:0, rgb:LC.focus.slice() };   /* read by the dust */
+
+    function clamp01(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function smooth(t){ return t * t * (3 - 2 * t); }
+    function at(kf, p){
+      for(var i = 1; i < kf.length; i++){
+        if(p <= kf[i][0]){
+          var a = kf[i-1], b = kf[i], t = smooth(clamp01((p - a[0]) / (b[0] - a[0] || 1))), out = [];
+          for(var k = 1; k < 7; k++) out.push(a[k] + (b[k] - a[k]) * t);
+          return out;
+        }
+      }
+      return kf[kf.length - 1].slice(1);
+    }
+    function window4(w, p){ return p <= w[0] || p >= w[3] ? 0 : p < w[1] ? smooth((p - w[0]) / (w[1] - w[0])) : p > w[2] ? 1 - smooth((p - w[2]) / (w[3] - w[2])) : 1; }
+
+    function update(){
+      ticking = false;
+      var r = sec.getBoundingClientRect(), total = sec.offsetHeight - window.innerHeight;
+      var p = forced !== null ? forced : reduceMotion ? 1 : (total > 0 ? clamp01(-r.top / total) : 0);
+      var narrow = window.innerWidth < 821;
+      var col = [0,0,0], wsum = 0, axsum = 0, best = null, bestO = -1;
+      prods.forEach(function(pr){
+        var v = at(pr.kf, p);
+        /* on a phone the product stays in the middle during the journey and spreads less at the end */
+        var x = narrow ? (p > .84 ? v[0] * .95 : v[0] * .12) : v[0];
+        /* portrait finale: the family sits lower and smaller, between "One" and "quiet", never on the letters */
+        var fin = narrow && p > .84;
+        pr.el.style.setProperty('--x', x.toFixed(2) + 'vw');
+        pr.el.style.setProperty('--y', (fin ? v[1] + (pr.mode === 'motion' ? -1 : 6) : v[1]).toFixed(2) + 'vh');
+        pr.el.style.setProperty('--r', v[2].toFixed(2) + 'deg');
+        pr.el.style.setProperty('--s', (fin ? v[3] * .82 : v[3]).toFixed(3));
+        pr.el.style.setProperty('--o', v[4].toFixed(3));
+        /* blur is the costliest part of the frame: keep it short and drop hidden products from paint */
+        pr.el.style.setProperty('--b', (v[4] < .01 ? 0 : v[5] * .5).toFixed(1) + 'px');
+        pr.el.style.visibility = v[4] < .01 ? 'hidden' : '';
+        var o = v[4], c = LC[pr.mode];
+        air[pr.mode] = o;
+        col[0] += c[0] * o; col[1] += c[1] * o; col[2] += c[2] * o; wsum += o; axsum += x * o;
+        if(o > bestO){ bestO = o; best = pr.mode; }
+      });
+      if(wsum > .001){
+        air.rgb = col.map(function(v){ return Math.round(v / wsum); });
+        pin.style.setProperty('--lc', air.rgb.join(','));
+        pin.style.setProperty('--ax', (50 + axsum / wsum).toFixed(2) + '%');
+      }
+      stats.forEach(function(s){
+        var o = window4(s.w, p);
+        s.el.style.setProperty('--so', o.toFixed(3));
+        s.el.style.setProperty('--sy', ((1 - o) * 28).toFixed(1) + 'px');
+      });
+      /* the headline: sharp at the start, out of focus during the journey, back for the finale */
+      var t = p < .08 ? 1 : p < .17 ? 1 - smooth((p - .08) / .09) : p < .86 ? 0 : p < .96 ? smooth((p - .86) / .10) : 1;
+      title.style.setProperty('--to', t.toFixed(3));
+      title.style.setProperty('--tb', ((1 - t) * 14).toFixed(1) + 'px');
+      title.style.visibility = t < .01 ? 'hidden' : '';
+
+      var mode = p > .88 ? 'all' : best;
+      if(mode !== shown){
+        shown = mode;
+        steps.forEach(function(s){ s.classList.toggle('is-on', mode === 'all' || s.dataset.step === mode); });
+      }
+      sec.classList.toggle('is-scrolled', p > .02);
+    }
+    function queue(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', queue, { passive:true });
+    window.addEventListener('resize', update);
+    window.__hx = function(p){ forced = p; update(); };   /* set a fixed progress (for screenshots / case GIFs) */
+
+    /* pointer: the whole stage leans a little, like looking around an object */
+    if(!reduceMotion){
+      sec.addEventListener('pointermove', function(e){
+        if(e.pointerType === 'touch') return;
+        stage.style.setProperty('--mx', ((e.clientX / window.innerWidth - .5) * -26).toFixed(1) + 'px');
+        stage.style.setProperty('--my', ((e.clientY / window.innerHeight - .5) * -16).toFixed(1) + 'px');
+      });
+    }
+
+    /* dust in the air: almost still in Focus, slowly rising in Flow, wind streaks in Motion */
+    (function dust(){
+      var cv = document.getElementById('hxDust');
+      if(!cv || reduceMotion) return;
+      var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1), parts = [], on = false, raf = 0;
+      function size(){ W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+      function seed(){ parts = []; for(var i = 0; i < 90; i++) parts.push({ x:Math.random() * W, y:Math.random() * H, z:.25 + Math.random() * .75, ph:Math.random() * 6.28 }); }
+      function frame(now){
+        if(!on) return;
+        ctx.clearRect(0, 0, W, H);
+        var sum = air.focus + air.flow + air.motion || 1, f = air.focus / sum, fl = air.flow / sum, m = air.motion / sum;
+        var c = air.rgb.join(',');
+        for(var i = 0; i < parts.length; i++){
+          var q = parts[i];
+          var vx = (f * Math.sin(now / 2600 + q.ph) * .05 + fl * Math.sin(now / 1800 + q.ph) * .12 + m * 2.6) * q.z;
+          var vy = (f * Math.cos(now / 3100 + q.ph) * .05 - fl * .28 - m * .18) * q.z;
+          q.x += vx; q.y += vy;
+          if(q.x > W + 20) q.x = -20; if(q.x < -20) q.x = W + 20;
+          if(q.y < -20) q.y = H + 20; if(q.y > H + 20) q.y = -20;
+          ctx.strokeStyle = 'rgba(' + c + ',' + (.10 + .34 * q.z).toFixed(2) + ')';
+          ctx.lineWidth = .6 + q.z;
+          ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(q.x, q.y); ctx.lineTo(q.x - vx * 7 - .01, q.y - vy * 7); ctx.stroke();
+        }
+        raf = requestAnimationFrame(frame);
+      }
+      size(); seed();
+      window.addEventListener('resize', function(){ size(); });
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(en){
+          on = en[0].isIntersecting;
+          cancelAnimationFrame(raf);
+          if(on) raf = requestAnimationFrame(frame);
+        }, { threshold:0 }).observe(sec);
+      } else { on = true; raf = requestAnimationFrame(frame); }
+    })();
+
+    update();
+    /* the scene fades up from the dark; after that the stage answers the pointer quickly */
+    setTimeout(function(){ sec.classList.add('is-on'); }, reduceMotion ? 0 : 150);
+    setTimeout(function(){ stage.style.transition = 'transform .9s cubic-bezier(.2,.7,.2,1)'; }, reduceMotion ? 0 : 2800);
+  })();
+
+  /* ---- SYSTEM section ---- */
+  var SYSTEM_DATA = {
+    focus:  { air:'Still air · Cold light', name:'Aether One',
+              tag:'Hybrid ANC that turns an open office into a closed door. Built for the work that needs your full attention.',
+              price:'€449', cta:'See Aether One' },
+    flow:   { air:'Warm air · Dusk light', name:'Aether Flow',
+              tag:'Six-microphone calls, one-tap transparency, and a fold-flat build made for days that mix work, calls, and everything after.',
+              price:'€249', cta:'See Aether Flow' },
+    motion: { air:'Moving air · Daylight', name:'Aether Move',
+              tag:'Awareness Mode on by default outdoors, wing-tip stability for training, and a case that outlasts your longest week.',
+              price:'€179', cta:'See Aether Move' }
+  };
+  var sysSection = document.getElementById('system');
+  var sysChips = document.querySelectorAll('.sys-tab');
+  var sysShots = document.querySelectorAll('.sys-shot');
+  var sysCopy = document.querySelector('.system-copy');
+  var sysAir = document.getElementById('systemAir');
+  var sysName = document.getElementById('systemName');
+  var sysTag = document.getElementById('systemTag');
+  var sysCta = document.getElementById('systemCta');
+  var sysCtaArrow = sysCta.querySelector('svg').outerHTML;
+
+
+  var currentSystemMode = 'focus';
+  function setSystem(mode){
+    var d = SYSTEM_DATA[mode];
+    if(mode === currentSystemMode) return;
+    currentSystemMode = mode;
+    /* the air changes first (background, light, text colour), then the product crossfades */
+    sysSection.dataset.atmo = mode;
+    sysShots.forEach(function(s){ s.classList.toggle('is-on', s.dataset.shot === mode); });
+    sysChips.forEach(function(c){
+      var on = c.dataset.system === mode;
+      c.classList.toggle('active', on);
+      c.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    sysCopy.classList.add('is-swapping');
+    setTimeout(function(){
+      sysAir.textContent = d.air;
+      sysName.textContent = d.name;
+      sysTag.textContent = d.tag;
+      sysCta.innerHTML = d.cta + sysCtaArrow;
+      sysCopy.classList.remove('is-swapping');
+    }, 350);
+  }
+  sysChips.forEach(function(chip){
+    chip.addEventListener('click', function(){ setSystem(chip.dataset.system); });
+  });
+  sysCta.addEventListener('click', function(){ specsLight(currentSystemMode); });
+
+  /* ---- PRODUCT FINDER: "focus the air" ----
+     Field coords: x 0 still -> 1 in motion, y 0 block out -> 1 stay aware.
+     Each atmosphere has a home point; its weight falls off with distance (gaussian).
+     Weights blend the colour of the light and the behaviour of the dust,
+     and set how sharp each mode's word is. The background never changes. */
+  var afSec = document.getElementById('finder');
+  var afField = document.getElementById('afField');
+  var afDot = document.getElementById('afDot');
+  var afCanvas = document.getElementById('afAir');
+  var afCtx = afCanvas.getContext('2d');
+  var afResult = document.getElementById('afResult');
+  var afMatch = document.getElementById('afMatch');
+  var afReadout = document.getElementById('afReadout');
+  var afWords = {};
+  document.querySelectorAll('.af-word').forEach(function(el){ afWords[el.dataset.word] = el; });
+  var frDesc = document.getElementById('frDesc');
+  var frCta = document.getElementById('frCta');
+  var frCtaArrow = frCta.querySelector('svg').outerHTML;
+
+  var AF_KEYS = ['focus', 'flow', 'motion'];
+  var AF = {
+    focus:  { at:[0.14,0.16], name:'Focus', product:'Aether One', light:[214,226,240],
+              desc:'Still, and shutting the world out. Deep work and long-haul flights: Aether One is built for exactly this.' },
+    flow:   { at:[0.36,0.70], name:'Flow', product:'Aether Flow', light:[226,208,182],
+              desc:'Mostly still, staying aware. Built for the everyday mix of calls, focus, and life around you.' },
+    motion: { at:[0.86,0.84], name:'Motion', product:'Aether Move', light:[255,241,220],
+              desc:'Moving, and staying aware of the street. Training and the city: Aether Move is built for exactly this.' }
+  };
+  var afReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var afTarget = { x:0.36, y:0.62 }, afPos = { x:0.36, y:0.62 };
+  var afW = { focus:0, flow:1, motion:0 };
+  var afMode = null, afTouched = false, afDragging = false, afRunning = false;
+  var afParticles = [], afWidth = 0, afHeight = 0, afBox = { x:0, y:0, s:1 };
+
+  function afClamp(v){ return Math.max(0, Math.min(1, v)); }
+  function afWeights(p){
+    var sum = 0, w = {};
+    AF_KEYS.forEach(function(k){
+      var dx = p.x - AF[k].at[0], dy = p.y - AF[k].at[1];
+      w[k] = Math.exp(-(dx*dx + dy*dy) / 0.04);
+      sum += w[k];
+    });
+    AF_KEYS.forEach(function(k){ w[k] = sum ? w[k] / sum : 1/3; });
+    return w;
+  }
+  function afLight(){
+    var c = [0,0,0];
+    AF_KEYS.forEach(function(k){ for(var i=0;i<3;i++) c[i] += AF[k].light[i] * afW[k]; });
+    return [Math.round(c[0]), Math.round(c[1]), Math.round(c[2])];
+  }
+
+  function afSetResult(mode){
+    afMode = mode;
+    afSec.dataset.mode = mode;
+    afResult.classList.add('is-swapping');
+    setTimeout(function(){
+      var a = AF[afMode];
+      frDesc.textContent = a.name + '. ' + a.desc;
+      frCta.innerHTML = 'Meet ' + a.product + frCtaArrow;
+      specsYour(afMode);
+      afResult.classList.remove('is-swapping');
+    }, 250);
+  }
+
+  function afApply(){
+    afW = afWeights(afPos);
+    var light = afLight();
+    afSec.style.setProperty('--af-light', light.join(','));
+    /* the closest mode is sharp; the others stay in the haze */
+    AF_KEYS.forEach(function(k){
+      var w = afW[k];
+      afWords[k].style.filter = 'blur(' + ((1 - w) * 10).toFixed(1) + 'px)';
+      afWords[k].style.opacity = (0.3 + 0.7 * w).toFixed(3);
+    });
+    var best = AF_KEYS.reduce(function(a, b){ return afW[b] > afW[a] ? b : a; });
+    if(best !== afMode) afSetResult(best);
+    afMatch.textContent = '· ' + Math.round(afW[best] * 100) + '% match';
+    afDot.style.left = (afPos.x * 100) + '%';
+    afDot.style.top = (afPos.y * 100) + '%';
+    afReadout.textContent = 'X ' + afPos.x.toFixed(2) + ' · Y ' + afPos.y.toFixed(2);
+    return light;
+  }
+
+  /* dust: one particle system whose behaviour is a weighted blend of three kinds of air */
+  function afSpawn(){
+    return { x:Math.random()*afWidth, y:Math.random()*afHeight, z:0.3 + Math.random()*0.7,
+             r:0.6 + Math.random()*1.4, ph:Math.random()*Math.PI*2 };
+  }
+  function afResize(){
+    var r = afSec.getBoundingClientRect(), f = afField.getBoundingClientRect();
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    afWidth = r.width; afHeight = r.height;
+    afCanvas.width = Math.round(afWidth * dpr); afCanvas.height = Math.round(afHeight * dpr);
+    afCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    afBox = { x:f.left - r.left, y:f.top - r.top, s:f.width };
+    var n = Math.round(Math.min(850, afWidth * afHeight / 1500));
+    while(afParticles.length < n) afParticles.push(afSpawn());
+    afParticles.length = n;
+  }
+  function afDraw(t, light){
+    var time = t * 0.001;
+    var wf = afW.focus, wl = afW.flow, wm = afW.motion;
+    var lx = afBox.x + afPos.x * afBox.s, ly = afBox.y + afPos.y * afBox.s;
+    var rgb = light.join(',');
+
+    afCtx.clearRect(0, 0, afWidth, afHeight);
+    /* the light itself: a pool in the colour of the atmosphere, wider and softer in daylight */
+    var radius = 300 + wm * 220;
+    var g = afCtx.createRadialGradient(lx, ly, 0, lx, ly, radius);
+    g.addColorStop(0, 'rgba(' + rgb + ',' + (0.2 + wm * 0.06) + ')');
+    g.addColorStop(0.45, 'rgba(' + rgb + ',0.06)');
+    g.addColorStop(1, 'rgba(' + rgb + ',0)');
+    afCtx.fillStyle = g;
+    afCtx.fillRect(0, 0, afWidth, afHeight);
+
+    afCtx.strokeStyle = 'rgb(' + rgb + ')';
+    afCtx.lineCap = 'round';
+    var streak = 1 + wm * 9;
+    for(var i = 0; i < afParticles.length; i++){
+      var p = afParticles[i];
+      /* focus: near-still hover · flow: slow rise and sway · motion: wind with gusts */
+      var vx = wf * Math.sin(time*0.3 + p.ph) * 0.04
+             + wl * Math.sin(time*0.5 + p.ph) * 0.28 * p.z
+             + wm * (2.8 * p.z + Math.sin(time*1.4 + p.ph) * 0.7);
+      var vy = wf * Math.cos(time*0.25 + p.ph) * 0.04
+             + wl * -0.24 * p.z
+             + wm * Math.sin(time*0.9 + p.ph*2) * 0.35;
+      if(!afReduce){ p.x += vx; p.y += vy; }
+      if(p.x > afWidth + 20) p.x = -20; else if(p.x < -20) p.x = afWidth + 20;
+      if(p.y > afHeight + 20) p.y = -20; else if(p.y < -20) p.y = afHeight + 20;
+
+      var dx = p.x - lx, dy = p.y - ly;
+      var near = 1 / (1 + (dx*dx + dy*dy) / 30000);
+      var a = (0.3 + 0.7*p.z) * (0.12 + 0.9 * near);
+      afCtx.globalAlpha = a > 1 ? 1 : a;
+      afCtx.lineWidth = p.r * p.z;
+      afCtx.beginPath();
+      afCtx.moveTo(p.x - vx*streak, p.y - vy*streak);
+      afCtx.lineTo(p.x + 0.01, p.y);
+      afCtx.stroke();
+    }
+    afCtx.globalAlpha = 1;
+  }
+  function afFrame(t){
+    if(!afRunning) return;
+    if(!afTouched && !afReduce){
+      /* idle: the light drifts a little, so the field looks alive and invites a drag */
+      afTarget.x = 0.36 + Math.sin(t*0.0005) * 0.05;
+      afTarget.y = 0.62 + Math.cos(t*0.0004) * 0.04;
+    }
+    afPos.x += (afTarget.x - afPos.x) * 0.12;
+    afPos.y += (afTarget.y - afPos.y) * 0.12;
+    afDraw(t, afApply());
+    requestAnimationFrame(afFrame);
+  }
+  function afStart(){ if(afRunning) return; afRunning = true; requestAnimationFrame(afFrame); }
+  function afStop(){ afRunning = false; }
+  function afJump(){ afPos.x = afTarget.x; afPos.y = afTarget.y; afDraw(0, afApply()); }
+
+  function afTouch(){ if(!afTouched){ afTouched = true; afSec.classList.add('is-touched'); } }
+  function afFromEvent(e){
+    var r = afField.getBoundingClientRect();
+    afTarget.x = afClamp((e.clientX - r.left) / r.width);
+    afTarget.y = afClamp((e.clientY - r.top) / r.height);
+    afTouch();
+    if(afReduce) afJump();
+  }
+  afField.addEventListener('pointerdown', function(e){
+    afDragging = true; afSec.classList.add('is-dragging');
+    afField.setPointerCapture(e.pointerId);
+    afFromEvent(e);
+  });
+  afField.addEventListener('pointermove', function(e){ if(afDragging) afFromEvent(e); });
+  function afEnd(){ afDragging = false; afSec.classList.remove('is-dragging'); }
+  afField.addEventListener('pointerup', afEnd);
+  afField.addEventListener('pointercancel', afEnd);
+  afField.addEventListener('keydown', function(e){
+    var step = e.shiftKey ? 0.15 : 0.05, d = { ArrowLeft:[-step,0], ArrowRight:[step,0], ArrowUp:[0,-step], ArrowDown:[0,step] }[e.key];
+    if(!d) return;
+    e.preventDefault();
+    afTouch();
+    afTarget.x = afClamp(afTarget.x + d[0]);
+    afTarget.y = afClamp(afTarget.y + d[1]);
+    if(afReduce) afJump();
+  });
+
+  window.addEventListener('resize', afResize);
+  afResize();
+  afDraw(0, afApply());
+  if(!afReduce && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ afResize(); afStart(); } else afStop(); });
+    }).observe(afSec);
+  }
+  frCta.addEventListener('click', function(){ specsYour(afMode); });
+
+  /* ---- SPEC SHEET: a printed datasheet ----
+     "Your mode" comes from the Finder (specsYour). Tabs, table columns and footer links swap the
+     sheet (specsLight): the numbers drop out, the leader lines retract, the new sheet draws in. */
+  var specsSec = document.getElementById('specs');
+  var sheetFig = document.getElementById('sheetFig');
+  var sheetTabs = specsSec.querySelectorAll('.sheet-tab');
+  var sheetShots = specsSec.querySelectorAll('.sheet-shot');
+  var sheetCells = specsSec.querySelectorAll('.sheet-table [data-mode]');
+  var sheetK = {};
+  specsSec.querySelectorAll('[data-k]').forEach(function(el){ sheetK[el.dataset.k] = el; });
+  var SHEET = {
+    focus:  { no:1, name:'Aether One',  form:'Over-ear, flagship',
+              anc:'−38', ancU:'dB', ancL:'Hybrid noise cancelling', w:'258', wU:'g', wL:'Memory-foam cushions',
+              bat:'40', batU:'h', batL:'Battery, ANC on', drv:'42', drvU:'mm', drvL:'Bio-cellulose driver' },
+    flow:   { no:2, name:'Aether Flow', form:'On-ear, foldable',
+              anc:'−32', ancU:'dB', ancL:'Hybrid noise cancelling', w:'220', wU:'g', wL:'Folds flat',
+              bat:'30', batU:'h', batL:'Battery', drv:'40', drvU:'mm', drvL:'Dynamic driver' },
+    motion: { no:3, name:'Aether Move', form:'True wireless',
+              anc:'Aware', ancU:'', ancL:'Street stays audible', w:'5', wU:'g', wL:'Per bud, wing tips',
+              bat:'40', batU:'h', batL:'8 h buds + 32 h case', drv:'IP54', drvU:'', drvL:'Sweat and rain' }
+  };
+  var specsHome = 'flow', sheetMode = null, sheetT = null;
+  function specsLight(mode){
+    if(!sheetFig || mode === sheetMode) return;
+    sheetMode = mode;
+    var d = SHEET[mode];
+    specsSec.dataset.lit = mode;
+    sheetTabs.forEach(function(t){ var on = t.dataset.mode === mode; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    sheetCells.forEach(function(c){ c.classList.toggle('is-on', c.dataset.mode === mode); });
+    sheetShots.forEach(function(s){ s.classList.toggle('is-on', s.dataset.mode === mode); });
+    document.getElementById('sheetBarMode').textContent = '0' + d.no + ' / ' + d.name.replace('Aether ', '') + ' · ' + d.form;
+    document.getElementById('sheetBarNo').textContent = 'Sheet ' + d.no + ' of 3';
+    document.getElementById('sheetCap').textContent = 'Fig. 0' + d.no + ' — ' + d.name;
+    var btn = document.getElementById('sheetReserve');
+    btn.dataset.reserve = d.name;
+    document.getElementById('sheetReserveText').textContent = 'Reserve ' + d.name;
+    ctaSet(mode);   /* the last product you looked at is the one the final chapter offers */
+    /* numbers out, lines in, then the new sheet draws */
+    sheetFig.classList.add('is-swapping');
+    clearTimeout(sheetT);
+    sheetT = setTimeout(function(){
+      Object.keys(sheetK).forEach(function(k){ sheetK[k].textContent = d[k]; });
+      sheetFig.dataset.mode = mode;
+      sheetFig.classList.remove('is-swapping');
+    }, 260);
+  }
+  function specsYour(mode){
+    if(!sheetFig) return;
+    specsHome = mode;
+    specsLight(mode);
+    ctaSet(mode);
+  }
+  sheetTabs.forEach(function(t){ t.addEventListener('click', function(){ specsLight(t.dataset.mode); }); });
+  sheetCells.forEach(function(c){ c.addEventListener('click', function(){ specsLight(c.dataset.mode); }); });
+  specsYour(typeof afMode === 'string' ? afMode : 'flow');
+
+  /* ---- FINAL CTA: three engraved lines, one is yours ----
+     Follows the Finder like the spec sheet does; the button always reserves the lit mode. */
+  var fcSec = document.querySelector('.final-cta');
+  /* the three grooves of the engraving are the choice */
+  var fcLines = document.querySelectorAll('.fc-groove');
+  var fcReserve = document.getElementById('fcReserve');
+  var fcReserveText = document.getElementById('fcReserveText');
+  var fcPickName = document.getElementById('fcPickName'), fcPickPrice = document.getElementById('fcPickPrice');
+  var fcCapNo = document.getElementById('fcCapNo'), fcCapText = document.getElementById('fcCapText');
+  var FC = { focus:{ no:'01', name:'Focus', light:'214,226,240', product:'Aether One', price:'€449' }, flow:{ no:'02', name:'Flow', light:'226,208,182', product:'Aether Flow', price:'€249' }, motion:{ no:'03', name:'Motion', light:'255,241,220', product:'Aether Move', price:'€179' } };
+  var fcMode = 'flow';
+  function fcCaption(mode, preview){
+    if(!fcCapNo) return;
+    fcCapNo.textContent = FC[mode].no;
+    fcCapText.textContent = FC[mode].name + ' · ' + (preview ? FC[mode].product + ' · ' + FC[mode].price : 'cut deeper on your pair');
+  }
+  function ctaSet(mode){
+    if(!fcLines || !fcReserve) return;
+    fcMode = mode;
+    fcLines.forEach(function(l){
+      var on = l.dataset.mode === mode;
+      l.classList.toggle('is-on', on);
+      l.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+    fcSec.style.setProperty('--lc', FC[mode].light);
+    fcReserve.dataset.reserve = FC[mode].product;
+    fcReserveText.textContent = 'Reserve ' + FC[mode].product;
+    fcPickName.textContent = FC[mode].product;
+    fcPickPrice.textContent = FC[mode].price;
+    fcCaption(mode, false);
+    /* the footer's light keeps the colour of the pair you chose */
+    var ftEl = document.getElementById('ft');
+    if(ftEl) ftEl.dataset.mode = mode;
+  }
+  fcLines.forEach(function(l){
+    l.addEventListener('click', function(){ ctaSet(l.dataset.mode); });
+    l.addEventListener('mouseenter', function(){ fcCaption(l.dataset.mode, true); });
+    l.addEventListener('mouseleave', function(){ fcCaption(fcMode, false); });
+  });
+  ctaSet(specsHome);
+  /* the engraving opens up: scroll through the pinned chapter grows the frame to the full screen
+     (0 -> .45), a light passes over the metal (.28 -> .62), the frame dims and the choice appears (.55+) */
+  (function initFcScroll(){
+    var fcPin = fcSec.querySelector('.fc-pin');
+    if(!fcPin) return;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches, ticking = false;
+    function c01(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function ease(t){ return 1 - Math.pow(1 - t, 3); }
+    function update(){
+      ticking = false;
+      var total = fcSec.offsetHeight - window.innerHeight;
+      var p = still ? 1 : total > 0 ? c01(-fcSec.getBoundingClientRect().top / total) : 1;
+      if(window.__fcP != null) p = window.__fcP;
+      fcPin.style.setProperty('--open', ease(c01(p / .45)).toFixed(4));
+      fcPin.style.setProperty('--sheen', c01((p - .28) / .34).toFixed(4));
+      fcPin.style.setProperty('--dim', c01((p - .46) / .14).toFixed(4));
+      var show = p > .55;
+      fcSec.classList.toggle('is-in', show);
+    }
+    window.__fc = function(p){ window.__fcP = p; update(); };
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive:true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  /* footer product links light the right column */
+  document.querySelectorAll('[data-spec-jump]').forEach(function(link){
+    link.addEventListener('click', function(){ specsLight(link.dataset.specJump); });
+  });
+
+  /* ---- SITUATION: one day, three airs ----
+     Scroll progress through the pinned section becomes the hour of the day. The chapter title
+     holds the first frame, then the clock takes over: each scene holds its time for a while,
+     then the clock runs on to the next one and the frame swaps through the haze. */
+  (function initDay(){
+    var sec = document.getElementById('problem');
+    if(!sec || !sec.classList.contains('day')) return;
+    var intro = sec.querySelector('.day-intro');
+    var scenes = sec.querySelectorAll('.day-scene');
+    var shots = sec.querySelectorAll('.day-shot');
+    var haze = document.getElementById('dayHaze');
+    var dot = document.getElementById('dayDot'), fill = document.getElementById('dayFill');
+    var clock = document.getElementById('dayClock');
+    var P = [0, .30, .42, .62, .74, 1];               // scroll progress
+    var H = [8 + 40/60, 8 + 40/60, 11, 11, 19.5, 19.5]; // hour of the day
+    var CUT = [.36, .68];                              // where the frame changes
+    var INTRO = .12;                                   // title holds the first frame until here
+    var current = -1, showIntro = null, ticking = false;
+
+    function hourAt(p){
+      for(var i=1;i<P.length;i++){
+        if(p <= P[i]){ var t = (p - P[i-1]) / (P[i] - P[i-1]); return H[i-1] + (H[i] - H[i-1]) * t; }
+      }
+      return H[H.length-1];
+    }
+    function fmt(h){
+      var m = Math.round(h * 60 / 5) * 5, hh = Math.floor(m / 60), mm = m % 60;
+      return (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm;
+    }
+    function setScene(i, isIntro){
+      if(i === current && isIntro === showIntro) return;
+      if(current !== -1 && i !== current && haze){
+        haze.classList.remove('is-on'); void haze.offsetWidth; haze.classList.add('is-on');
+      }
+      current = i; showIntro = isIntro;
+      intro.classList.toggle('is-on', isIntro);
+      scenes.forEach(function(s, k){ s.classList.toggle('is-on', !isIntro && k === i); });
+      shots.forEach(function(s, k){ s.classList.toggle('is-on', k === i); });
+      sec.dataset.atmo = scenes[i].dataset.atmo;
+    }
+    function update(){
+      ticking = false;
+      var total = sec.offsetHeight - window.innerHeight;
+      var p = total > 0 ? Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / total)) : 0;
+      if(window.__dayP != null) p = window.__dayP;   /* fixed progress for screenshots */
+      var h = hourAt(p), x = ((h - 6) / 16 * 100).toFixed(2) + '%';
+      dot.style.left = x; fill.style.width = x;
+      clock.textContent = fmt(h);
+      setScene(p < CUT[0] ? 0 : p < CUT[1] ? 1 : 2, p < INTRO);
+    }
+    window.__day = function(p){ window.__dayP = p; update(); };
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  /* ---- facts: fade in from haze once visible ---- */
+  (function initFacts(){
+    var facts = document.querySelector('.facts');
+    if(!facts) return;
+    if(!('IntersectionObserver' in window)){ facts.classList.add('in'); return; }
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function fmt(v){ return v < 0 ? '−' + Math.abs(v) : String(v); }
+    function countUp(el, delay){
+      var to = parseInt(el.getAttribute('data-to'), 10), dur = 1600, start = null;
+      el.style.minWidth = el.offsetWidth + 'px';   /* no jitter while digits change */
+      el.textContent = '0';
+      setTimeout(function(){
+        requestAnimationFrame(function step(ts){
+          if(start === null) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var e = 1 - Math.pow(2, -10 * p);          /* ease-out expo: fast, then settles */
+          el.textContent = fmt(Math.round(to * (p === 1 ? 1 : e)));
+          if(p < 1) requestAnimationFrame(step);
+        });
+      }, delay);
+    }
+    var fio = new IntersectionObserver(function(entries){
+      if(!entries[0].isIntersecting) return;
+      fio.disconnect();
+      if(!reduce){
+        facts.querySelectorAll('.count').forEach(function(el, i){ countUp(el, i * 120); });
+      }
+      facts.classList.add('in');
+    }, { threshold:0.3 });
+    fio.observe(facts);
+  })();
+
+  /* ---- info modal (footer placeholder links) ---- */
+  (function initInfoModal(){
+    var modal = document.getElementById('infoModal');
+    var backdrop = document.getElementById('infoModalBackdrop');
+    var closeBtn = document.getElementById('infoModalClose');
+    var okBtn = document.getElementById('infoModalOk');
+    var titleEl = document.getElementById('infoModalTitle');
+    var msgEl = document.getElementById('infoModalMsg');
+    if(!modal) return;
+
+    var lastFocus = null;
+    function openModal(title, msg){
+      lastFocus = document.activeElement;
+      titleEl.textContent = title;
+      msgEl.textContent = msg;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      okBtn.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    document.querySelectorAll('[data-modal-title]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        openModal(link.dataset.modalTitle, link.dataset.modalMsg);
+      });
+    });
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    okBtn.addEventListener('click', function(e){ e.preventDefault(); closeModal(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
+
+
+  /* ---- FOOTER: a light passes through the word (React Bits "Variable Proximity", vanilla) ----
+     Each letter's weight and brightness follow the distance to the light: the pointer, or on touch
+     and when idle, a light that drifts slowly across on its own. */
+  (function initFooterWord(){
+    var word = document.getElementById('ftWord'), ft = document.getElementById('ft');
+    if(!word || !ft) return;
+    var letters = [].slice.call(word.children);
+    var cur = letters.map(function(){ return 0; });
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var pointer = null, lastMove = 0, running = false, visible = false;
+
+    function fit(){
+      letters.forEach(function(l){ l.style.width = ''; l.style.fontWeight = 500; });
+      word.style.fontSize = '';
+      var avail = word.clientWidth - parseFloat(getComputedStyle(word).paddingLeft) * 2;
+      var sum = letters.reduce(function(s, l){ return s + l.getBoundingClientRect().width; }, 0);
+      var fs = parseFloat(getComputedStyle(word).fontSize) * avail * .96 / sum;
+      word.style.fontSize = fs + 'px';
+      letters.forEach(function(l){ l.style.width = l.getBoundingClientRect().width + 'px'; l.style.fontWeight = ''; });
+      paint(true);
+    }
+    function paint(force){
+      var r = word.getBoundingClientRect(), now = performance.now();
+      var lx, ly;
+      if(pointer && now - lastMove < 2500){ lx = pointer.x; ly = pointer.y; }
+      else { lx = r.left + r.width * (.5 + .5 * Math.sin(now / 2600)); ly = r.top + r.height * .5; }
+      var R = Math.max(220, r.width * .28);
+      letters.forEach(function(l, i){
+        var b = l.getBoundingClientRect();
+        var dx = lx - (b.left + b.width / 2), dy = ly - (b.top + b.height / 2);
+        var t = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / R);
+        t = t * t * (3 - 2 * t);
+        cur[i] = force ? t : cur[i] + (t - cur[i]) * .12;
+        l.style.fontWeight = Math.round(300 + 400 * cur[i]);
+        l.style.color = 'rgba(var(--lc),' + (.10 + .78 * cur[i]).toFixed(3) + ')';
+      });
+    }
+    function loop(){
+      if(!visible){ running = false; return; }
+      paint(false);
+      requestAnimationFrame(loop);
+    }
+    function start(){ if(!running && !reduce){ running = true; requestAnimationFrame(loop); } }
+
+    ft.addEventListener('pointermove', function(e){
+      if(e.pointerType === 'touch') return;
+      pointer = { x:e.clientX, y:e.clientY }; lastMove = performance.now();
+    });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; if(visible) start(); }, { threshold:0 }).observe(word);
+    }
+    window.addEventListener('resize', fit);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit); else fit();
+  })();
+
+  /* ---- newsletter subscribe (no backend — inline confirmation) ---- */
+  (function initNewsletter(){
+    var form = document.getElementById('newsletterForm');
+    var note = document.getElementById('newsletterNote');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = document.getElementById('newsletterEmail');
+      if(!email.checkValidity()){ email.reportValidity(); return; }
+      form.style.display = 'none';
+      note.textContent = "Thanks — you're on the list. (This is a concept project, so no email actually gets sent.)";
+      note.style.color = 'rgba(255,255,255,0.75)';
+    });
+  })();
+
+  /* ---- reserve modal (Deep Dive + Finder "Reserve" buttons) ---- */
+  (function initReserve(){
+    var modal = document.getElementById('reserveModal');
+    var backdrop = document.getElementById('reserveModalBackdrop');
+    var closeBtn = document.getElementById('reserveModalClose');
+    var productEl = document.getElementById('reserveModalProduct');
+    var priceEl = document.getElementById('reserveModalPrice');
+    var form = document.getElementById('reserveForm');
+    var note = document.getElementById('reserveNote');
+    if(!modal) return;
+
+    var PRICE_MAP = { 'Aether One':'€449', 'Aether Flow':'€249', 'Aether Move':'€179' };
+    var DEFAULT_NOTE = "No payment now — we'll email you when it ships. (Concept project: nothing is actually sent.)";
+
+    var lastFocus = null;
+    function openReserve(product){
+      lastFocus = document.activeElement;
+      productEl.textContent = product;
+      priceEl.style.display = '';
+      priceEl.textContent = (PRICE_MAP[product] || '') + ' · Two-year warranty · 14-day home trial';
+      form.reset();
+      form.style.display = '';
+      note.textContent = DEFAULT_NOTE;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('reserveEmail').focus();
+    }
+    function closeReserve(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    document.querySelectorAll('[data-reserve]').forEach(function(btn){
+      btn.addEventListener('click', function(){ openReserve(btn.dataset.reserve); });
+    });
+    backdrop.addEventListener('click', closeReserve);
+    closeBtn.addEventListener('click', closeReserve);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.classList.contains('open')) closeReserve();
+    });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = document.getElementById('reserveEmail');
+      if(!email.checkValidity()){ email.reportValidity(); return; }
+      form.style.display = 'none';
+      priceEl.style.display = 'none';
+      note.textContent = "Thanks — you're on the reserve list for " + productEl.textContent + ". (This is a concept project, so no order is actually placed.)";
+    });
+  })();
+
+
+  /* ---- headlines: split at <br> into masked lines, rise line by line ---- */
+  var titles = document.querySelectorAll('.section-title');   /* the hero headline has its own masks (.hx-t) */
+  titles.forEach(function(t){
+    t.innerHTML = t.innerHTML.split(/<br\s*\/?>/i).map(function(part, i){
+      return '<span class="ln"><span class="ln-i" style="transition-delay:' + (i * 110) + 'ms">' + part.trim() + '</span></span>';
+    }).join('');
+  });
+  /* ---- images: open with clip-path, then drop the clip so shadows and hovers are free ---- */
+  var clipEls = document.querySelectorAll('.system-media');
+  clipEls.forEach(function(el){ el.classList.add('clip-reveal'); });
+  function clipIn(el){ el.classList.add('in'); setTimeout(function(){ el.classList.add('done'); }, 1600); }
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    titles.forEach(function(t){ t.classList.add('lines-in'); });
+    clipEls.forEach(function(el){ el.classList.add('in', 'done'); });
+  } else {
+    var heroTitle = document.querySelector('.hx h1');
+    if(heroTitle) setTimeout(function(){ heroTitle.classList.add('lines-in'); }, 120);
+    var lio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        if(e.target.classList.contains('clip-reveal')) clipIn(e.target); else e.target.classList.add('lines-in');
+        lio.unobserve(e.target);
+      });
+    }, { threshold:0.25 });
+    titles.forEach(function(t){ if(t !== heroTitle) lio.observe(t); });
+    clipEls.forEach(function(el){ lio.observe(el); });
+  }
+
+  /* ---- three lines: the nav shows page progress, one line per third of the page ---- */
+  var navLines = document.querySelectorAll('#navProgress i');
+  function clamp01(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function drawLines(){
+    var vh = window.innerHeight;
+    var max = document.documentElement.scrollHeight - vh;
+    var pg = max > 0 ? clamp01(window.scrollY / max) : 0;
+    navLines.forEach(function(l, i){ l.style.setProperty('--p', clamp01(pg * 3 - i).toFixed(3)); });
+  }
+  var linesTick = false;
+  function queueLines(){ if(!linesTick){ linesTick = true; requestAnimationFrame(function(){ linesTick = false; drawLines(); }); } }
+  window.addEventListener('scroll', queueLines, { passive:true });
+  window.addEventListener('resize', function(){ drawLines(); });
+  drawLines();
+
+  /* ---- reveal on scroll ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold:0.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+
+<script>
+/* ---- Final CTA background shader (ported from MoltenMetal, no build step / no OGL) ---- */
+(function(){
+  var canvas = document.getElementById('ctaMolten');
+  if(!canvas) return;
+
+  var gl = canvas.getContext('webgl2', { alpha:true, premultipliedAlpha:true, antialias:false });
+  if(!gl){ return; } // no WebGL2 -> the CSS gradient already on .fc-frame stands alone
+
+  function hexToRgb(hex){
+    var r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if(!r) return [1,1,1];
+    return [parseInt(r[1],16)/255, parseInt(r[2],16)/255, parseInt(r[3],16)/255];
+  }
+
+  var vertexSrc = '#version 300 es\n' +
+    'in vec2 position;\n' +
+    'void main(){ gl_Position = vec4(position, 0.0, 1.0); }\n';
+
+  var fragmentSrc = '#version 300 es\n' +
+    'precision highp float;\n' +
+    'uniform vec2 iResolution; uniform float iTime; uniform float uSpeed; uniform float uScale;\n' +
+    'uniform float uDetail; uniform float uGlow; uniform float uCoreSize; uniform float uSwirl;\n' +
+    'uniform float uFold; uniform float uBlackPoint; uniform float uBrightness; uniform float uColorMode;\n' +
+    'uniform float uGrain; uniform float uGrainIntensity; uniform float uOpacity; uniform vec2 uMouse;\n' +
+    'uniform float uMouseStrength; uniform bool uEnableMouse; uniform vec3 uColor1; uniform vec3 uColor2;\n' +
+    'uniform vec3 uColor3; uniform vec3 uBackgroundColor; uniform bool uLightMode; out vec4 fragColor;\n' +
+    'float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }\n' +
+    'void main(){\n' +
+    '  float time = iTime * uSpeed;\n' +
+    '  vec2 p = uScale * ((gl_FragCoord.xy - 0.5 * iResolution.xy) / iResolution.y) - 0.5;\n' +
+    '  vec2 drift = vec2(0.0);\n' +
+    '  if(uEnableMouse){ drift = (uMouse - 0.5) * uMouseStrength * 2.0; }\n' +
+    '  p += drift;\n' +
+    '  vec2 i = p; float c = 0.0;\n' +
+    '  float r = length(p + vec2(sin(time), sin(time * 0.3 + 5.0)) * 0.5);\n' +
+    '  float d = length(p); float rot = d + time + p.x * uSwirl;\n' +
+    '  float cosRot = cos(rot);\n' +
+    '  mat2 warp = mat2(cos(rot - sin(time / 5.0)), sin(rot), -sin(cosRot - time), cosRot) * uFold;\n' +
+    '  float glowCore = uGlow * uCoreSize;\n' +
+    '  for(float n = 0.0; n < 8.0; n++){\n' +
+    '    if(n >= uDetail) break;\n' +
+    '    p *= warp;\n' +
+    '    float t = r - time / (n + 3.0);\n' +
+    '    i -= p + vec2(cos(t - i.x - r) + sin(t + i.y), sin(t - i.y) + cos(t + i.x) + r);\n' +
+    '    c += glowCore / length(vec2(sin(i.x + t), cos(i.y + t)));\n' +
+    '  }\n' +
+    '  c /= 6.0;\n' +
+    '  float intensity = max(c - uBlackPoint, 0.0) * uBrightness;\n' +
+    '  float g = clamp(intensity, 0.0, 1.0);\n' +
+    '  float mid = 0.5;\n' +
+    '  if(uColorMode > 1.5){ mid = 0.65; } else if(uColorMode > 0.5){ mid = 0.35; }\n' +
+    '  vec3 col = mix(uColor1, uColor2, smoothstep(0.0, mid, g));\n' +
+    '  col = mix(col, uColor3, smoothstep(mid, 1.0, g));\n' +
+    '  float a = g;\n' +
+    '  if(uGrain > 0.5){ float gr = hash(gl_FragCoord.xy + iTime); a += (gr - 0.5) * uGrainIntensity; }\n' +
+    '  a = clamp(a, 0.0, 1.0) * uOpacity;\n' +
+    '  if(uLightMode){\n' +
+    '    float signal = 1.0 - exp(-max(c, 0.0) * 6.5);\n' +
+    '    float body = smoothstep(0.075, 0.68, signal);\n' +
+    '    float ridge = smoothstep(0.42, 0.92, signal);\n' +
+    '    vec3 lightCol = mix(uColor1, uColor2, smoothstep(0.08, 0.52, signal));\n' +
+    '    lightCol = mix(lightCol, uColor3, smoothstep(0.52, 0.96, signal));\n' +
+    '    lightCol = mix(lightCol, lightCol * 0.72, ridge * 0.24);\n' +
+    '    float coverage = body * mix(0.2, 0.86, signal) * uOpacity;\n' +
+    '    if(uGrain > 0.5){ float gr = hash(gl_FragCoord.xy + iTime); coverage += (gr - 0.5) * uGrainIntensity * body * 0.16; }\n' +
+    '    fragColor = vec4(mix(uBackgroundColor, lightCol, clamp(coverage, 0.0, 0.92)), 1.0);\n' +
+    '  } else {\n' +
+    '    fragColor = vec4(col * a, a);\n' +
+    '  }\n' +
+    '}\n';
+
+  function compile(type, src){
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)){
+      console.warn('CTA shader compile error:', gl.getShaderInfoLog(s));
+      gl.deleteShader(s);
+      return null;
+    }
+    return s;
+  }
+
+  var vs = compile(gl.VERTEX_SHADER, vertexSrc);
+  var fs = compile(gl.FRAGMENT_SHADER, fragmentSrc);
+  if(!vs || !fs) return;
+
+  var prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){
+    console.warn('CTA shader link error:', gl.getProgramInfoLog(prog));
+    return;
+  }
+  gl.useProgram(prog);
+
+  var posBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  var posLoc = gl.getAttribLocation(prog, 'position');
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+  var U = {};
+  ['iResolution','iTime','uSpeed','uScale','uDetail','uGlow','uCoreSize','uSwirl','uFold',
+   'uBlackPoint','uBrightness','uColorMode','uGrain','uGrainIntensity','uOpacity','uMouse',
+   'uMouseStrength','uEnableMouse','uColor1','uColor2','uColor3','uBackgroundColor','uLightMode'
+  ].forEach(function(name){ U[name] = gl.getUniformLocation(prog, name); });
+
+  /* brand palette: dark base -> accent blue -> accent teal (matches the site's signature gradient) */
+  /* dawn: still graphite -> warm Flow amber -> cold Focus light */
+  var c1 = hexToRgb('#0A0B0D');
+  var c2 = hexToRgb('#CDBBA0');
+  var c3 = hexToRgb('#DDE3EA');
+  var bg = hexToRgb('#0A0B0D');
+
+  gl.uniform1f(U.uSpeed, 0.25);
+  gl.uniform1f(U.uScale, 4.2);
+  gl.uniform1f(U.uDetail, 3);
+  gl.uniform1f(U.uGlow, 1.6);
+  gl.uniform1f(U.uCoreSize, 0.1);
+  gl.uniform1f(U.uSwirl, 1);
+  gl.uniform1f(U.uFold, -0.2);
+  gl.uniform1f(U.uBlackPoint, 0.06);
+  gl.uniform1f(U.uBrightness, 1.3);
+  gl.uniform1f(U.uColorMode, 0); // molten
+  gl.uniform1f(U.uGrain, 1);
+  gl.uniform1f(U.uGrainIntensity, 0.04);
+  gl.uniform1f(U.uOpacity, 0.8);
+  gl.uniform1f(U.uMouseStrength, 0.22);
+  gl.uniform1i(U.uEnableMouse, 1);
+  gl.uniform1i(U.uLightMode, 0);
+  gl.uniform3f(U.uColor1, c1[0], c1[1], c1[2]);
+  gl.uniform3f(U.uColor2, c2[0], c2[1], c2[2]);
+  gl.uniform3f(U.uColor3, c3[0], c3[1], c3[2]);
+  gl.uniform3f(U.uBackgroundColor, bg[0], bg[1], bg[2]);
+  gl.uniform2f(U.uMouse, 0.5, 0.5);
+
+  gl.clearColor(0,0,0,0);
+
+  var frame = canvas.closest('.fc-frame') || canvas.parentNode;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function setSize(){
+    var rect = frame.getBoundingClientRect();
+    var w = Math.max(1, Math.floor(rect.width * dpr));
+    var h = Math.max(1, Math.floor(rect.height * dpr));
+    if(canvas.width !== w || canvas.height !== h){
+      canvas.width = w;
+      canvas.height = h;
+      gl.viewport(0, 0, w, h);
+      gl.uniform2f(U.iResolution, w, h);
+    }
+  }
+  if('ResizeObserver' in window){
+    new ResizeObserver(setSize).observe(frame);
+  } else {
+    window.addEventListener('resize', setSize);
+  }
+  setSize();
+
+  var targetMouse = [0.5, 0.5];
+  var currentMouse = [0.5, 0.5];
+  frame.addEventListener('mousemove', function(e){
+    var rect = frame.getBoundingClientRect();
+    targetMouse[0] = (e.clientX - rect.left) / rect.width;
+    targetMouse[1] = 1.0 - (e.clientY - rect.top) / rect.height;
+  });
+  frame.addEventListener('mouseleave', function(){
+    targetMouse[0] = 0.5; targetMouse[1] = 0.5;
+  });
+
+  var raf = 0, isVisible = true, isPageVisible = !document.hidden;
+  var t0 = performance.now();
+
+  function loop(t){
+    gl.uniform1f(U.iTime, (t - t0) * 0.001);
+    currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0]);
+    currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1]);
+    gl.uniform2f(U.uMouse, currentMouse[0], currentMouse[1]);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    raf = requestAnimationFrame(loop);
+  }
+  function tryStart(){ if(isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop); }
+  function tryStop(){ if(raf !== 0){ cancelAnimationFrame(raf); raf = 0; } }
+
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      isVisible = entries[0].isIntersecting;
+      isVisible ? tryStart() : tryStop();
+    }, { threshold:0 }).observe(frame);
+  }
+  document.addEventListener('visibilitychange', function(){
+    isPageVisible = !document.hidden;
+    isPageVisible ? tryStart() : tryStop();
+  });
+
+  tryStart();
+})();
+</script>
+
+<script>
+/* ---- cursor: three lines, quiet when still, one line over anything you can press (mouse only) ---- */
+(function(){
+  if(!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
+  var root = document.documentElement;
+  var cur = document.createElement('div');
+  cur.className = 'cur'; cur.setAttribute('aria-hidden', 'true');
+  cur.innerHTML = '<i></i><i></i><i></i>';
+  document.body.appendChild(cur);
+  var bars = cur.querySelectorAll('i');
+  root.classList.add('has-cur', 'cur-off');
+
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var HOT = 'a, button, [role="tab"], [role="radio"], label, select, .sheet-table [data-mode]';
+  var GAP = 7;                                     /* distance between the lines, px */
+  var PH = [0, 2.1, 4.3], FR = [.021, .029, .017]; /* each line swings at its own pace */
+  var x = -100, y = -100, lx = null, ly = null;
+  var noise = 0;                                   /* 0 = quiet, 1 = full swing */
+  var merge = 0, mergeTo = 0, press = 1, pressTo = 1, raf = 0;
+
+  function frame(t){
+    var speed = lx === null ? 0 : Math.min(1, Math.hypot(x - lx, y - ly) / 28);
+    lx = x; ly = y;
+    noise += ((still ? 0 : speed) - noise) * (speed > noise ? .35 : .08);   /* rises fast, settles slowly */
+    merge += (mergeTo - merge) * .2;
+    press += (pressTo - press) * .3;
+    cur.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+    for(var i = 0; i < 3; i++){
+      var off = (i - 1) * GAP * (1 - merge);
+      var swing = Math.abs(Math.sin(t * FR[i] + PH[i]));
+      var h = (1 - merge) * (.62 + noise * 1.1 * swing) + merge * 1.3;
+      bars[i].style.transform = 'translateX(' + off.toFixed(2) + 'px) scaleY(' + (h * press).toFixed(3) + ')';
+    }
+    var busy = noise > .005 || Math.abs(mergeTo - merge) > .005 || Math.abs(pressTo - press) > .005;
+    raf = busy ? requestAnimationFrame(frame) : 0;
+  }
+  function wake(){ if(!raf) raf = requestAnimationFrame(frame); }
+
+  window.addEventListener('mousemove', function(e){
+    x = e.clientX; y = e.clientY;
+    var t = e.target;
+    root.classList.toggle('cur-off', !!(t.closest && t.closest('.af-field, input, textarea')));
+    mergeTo = t.closest && t.closest(HOT) ? 1 : 0;
+    wake();
+  }, { passive:true });
+  document.addEventListener('mouseleave', function(){ root.classList.add('cur-off'); lx = null; });
+  window.addEventListener('mousedown', function(){ pressTo = .6; wake(); });
+  window.addEventListener('mouseup', function(){ pressTo = 1; wake(); });
+  frame(0);
+})();
+</script>
+
+</body>
+</html>
