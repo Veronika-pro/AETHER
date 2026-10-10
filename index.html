@@ -762,6 +762,7 @@
     .sheet-left{grid-area:left;} .sheet-right{grid-area:right;}
     .sheet-side{gap:var(--s-6);}
     .co-line{display:none;}
+    .co{min-width:0;} .co-text{flex-shrink:1; min-width:0;} /* labels wrap instead of running into the next column */
     .co-l{text-align:left;} .co-l .co-v{justify-content:flex-start;}
     .co-v{font-size:clamp(36px,11vw,48px);}
     .sheet-table-wrap{margin:var(--s-8) calc(var(--edge) * -1) 0; padding:0 var(--edge);}
